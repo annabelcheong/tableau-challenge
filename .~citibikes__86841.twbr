@@ -340,6 +340,19 @@
         <calculation class='tableau' formula='IF ATTR([startday])=&apos;Saturday&apos; or ATTR([startday])=&apos;Sunday&apos; THEN &apos;Weekend&apos;&#10;ELSE &apos;Weekday&apos;&#10;END' />
       </column>
       <column caption='index' datatype='integer' name='[F1]' role='measure' type='quantitative' />
+      <column datatype='string' name='[Gender (group)]' role='dimension' type='ordinal'>
+        <calculation class='categorical-bin' column='[gender]' new-bin='true'>
+          <bin default-name='false' value='&quot;Female&quot;'>
+            <value>2</value>
+          </bin>
+          <bin default-name='false' value='&quot;Male&quot;'>
+            <value>1</value>
+          </bin>
+          <bin default-name='false' value='&quot;Unknown&quot;'>
+            <value>0</value>
+          </bin>
+        </calculation>
+      </column>
       <column caption='FilterWeekdayOrWeekend' datatype='string' name='[Weekdays]' role='dimension' type='nominal'>
         <calculation class='categorical-bin' column='[startday]' new-bin='true'>
           <bin default-name='false' value='&quot;Weekdays&quot;'>
@@ -383,11 +396,23 @@
       <column-instance column='[start station name]' derivation='Count' name='[cnt:start station name:qk]' pivot='key' type='quantitative' />
       <column-instance column='[start station name]' derivation='CountD' name='[ctd:start station name:qk]' pivot='key' type='quantitative' />
       <column-instance column='[startdate]' derivation='Month' name='[mn:startdate:ok]' pivot='key' type='ordinal' />
+      <column-instance column='[gender]' derivation='None' name='[none:gender:ok]' pivot='key' type='ordinal' />
       <column-instance column='[Calculation_5524157564909359105]' derivation='User' name='[usr:Calculation_5524157564909359105:qk]' pivot='key' type='quantitative' />
       <column-instance column='[startdate]' derivation='Year' name='[yr:startdate:ok]' pivot='key' type='ordinal' />
+      <group caption='Action (End Station Name)' hidden='true' name='[Action (End Station Name)]' name-style='unqualified' user:auto-column='sheet_link'>
+        <groupfilter function='crossjoin'>
+          <groupfilter function='level-members' level='[end station name]' />
+        </groupfilter>
+      </group>
       <group caption='Action (FilterWeekdayOrWeekend)' hidden='true' name='[Action (FilterWeekdayOrWeekend)]' name-style='unqualified' user:auto-column='sheet_link'>
         <groupfilter function='crossjoin'>
           <groupfilter function='level-members' level='[Weekdays]' />
+        </groupfilter>
+      </group>
+      <group caption='Action (Gender (group),Gender)' hidden='true' name='[Action (Gender (group),Gender)]' name-style='unqualified' user:auto-column='sheet_link'>
+        <groupfilter function='crossjoin'>
+          <groupfilter function='level-members' level='[Gender (group)]' />
+          <groupfilter function='level-members' level='[none:gender:ok]' />
         </groupfilter>
       </group>
       <group caption='Action (MONTH(Startdate))' hidden='true' name='[Action (MONTH(Startdate))]' name-style='unqualified' user:auto-column='sheet_link'>
@@ -471,6 +496,17 @@
               <bucket>4</bucket>
             </map>
           </encoding>
+          <encoding attr='color' field='[Gender (group)]' palette='blue_teal_10_0' type='palette'>
+            <map to='#aec7e8'>
+              <bucket>&quot;Male&quot;</bucket>
+            </map>
+            <map to='#c7c7c7'>
+              <bucket>&quot;Unknown&quot;</bucket>
+            </map>
+            <map to='#f7b6d2'>
+              <bucket>&quot;Female&quot;</bucket>
+            </map>
+          </encoding>
         </style-rule>
       </style>
       <semantic-values>
@@ -514,6 +550,46 @@
     <mapsource name='Tableau' />
   </mapsources>
   <actions>
+    <action caption='Filter 8 (generated)' name='[Action10_64A6132FE92C4FD0ADA3EA31F3C12B6E]'>
+      <activation auto-clear='true' type='on-select' />
+      <source dashboard='Busiest Stations' type='sheet' worksheet='Most Popular Station (Finish Point)' />
+      <command command='tsc:tsl-filter'>
+        <param name='special-fields' value='all' />
+        <param name='target' value='Busiest Stations' />
+      </command>
+    </action>
+    <action caption='Filter 1 (generated) 1 1' name='[Action12_E91B5B5F2A9146E48C193E48DDF001B7]'>
+      <activation auto-clear='true' type='on-select' />
+      <source dashboard='Gender Bike Use' type='sheet' worksheet='Year' />
+      <command command='tsc:tsl-filter'>
+        <param name='special-fields' value='all' />
+        <param name='target' value='Gender Bike Use' />
+      </command>
+    </action>
+    <action caption='Filter 2 (generated) 1 1' name='[Action13_64415C84561A45C682BF25362476A177]'>
+      <activation auto-clear='true' type='on-select' />
+      <source dashboard='Gender Bike Use' type='sheet' worksheet='Month' />
+      <command command='tsc:tsl-filter'>
+        <param name='special-fields' value='all' />
+        <param name='target' value='Gender Bike Use' />
+      </command>
+    </action>
+    <action caption='Filter 4 (generated) 1' name='[Action15_C22910A1171842D38F0BCC423F17434F]'>
+      <activation auto-clear='true' type='on-select' />
+      <source dashboard='Gender Bike Use' type='sheet' worksheet='Weekend or Weekday' />
+      <command command='tsc:tsl-filter'>
+        <param name='special-fields' value='all' />
+        <param name='target' value='Gender Bike Use' />
+      </command>
+    </action>
+    <action caption='Filter 9 (generated)' name='[Action16_66080CA6BAE44DBA9160AE81C5F09250]'>
+      <activation auto-clear='true' type='on-select' />
+      <source dashboard='Gender Bike Use' type='sheet' worksheet='Gender' />
+      <command command='tsc:tsl-filter'>
+        <param name='special-fields' value='all' />
+        <param name='target' value='Gender Bike Use' />
+      </command>
+    </action>
     <action caption='Filter 1 (generated)' name='[Action1_CA3F87D73ABF41888658897E60F0CD79]'>
       <activation auto-clear='true' type='on-select' />
       <source dashboard='Busiest Stations' type='sheet' worksheet='Year' />
@@ -578,6 +654,14 @@
         <param name='target' value='Busiest Day and Time' />
       </command>
     </action>
+    <action caption='Filter 7 (generated)' name='[Action9_E6335281D4864A96B5374574102826AA]'>
+      <activation auto-clear='true' type='on-select' />
+      <source dashboard='Busiest Stations' type='sheet' worksheet='Most Popular Station (Starting Point)' />
+      <command command='tsc:tsl-filter'>
+        <param name='special-fields' value='all' />
+        <param name='target' value='Busiest Stations' />
+      </command>
+    </action>
   </actions>
   <worksheets>
     <worksheet name='Busiest Day'>
@@ -600,6 +684,19 @@
             <column caption='WeekdayOrWeekend' datatype='string' name='[Calculation_6110892153894715392]' role='measure' type='nominal'>
               <calculation class='tableau' formula='IF ATTR([startday])=&apos;Saturday&apos; or ATTR([startday])=&apos;Sunday&apos; THEN &apos;Weekend&apos;&#10;ELSE &apos;Weekday&apos;&#10;END' />
             </column>
+            <column datatype='string' name='[Gender (group)]' role='dimension' type='ordinal'>
+              <calculation class='categorical-bin' column='[gender]' new-bin='true'>
+                <bin default-name='false' value='&quot;Female&quot;'>
+                  <value>2</value>
+                </bin>
+                <bin default-name='false' value='&quot;Male&quot;'>
+                  <value>1</value>
+                </bin>
+                <bin default-name='false' value='&quot;Unknown&quot;'>
+                  <value>0</value>
+                </bin>
+              </calculation>
+            </column>
             <column caption='FilterWeekdayOrWeekend' datatype='string' name='[Weekdays]' role='dimension' type='nominal'>
               <calculation class='categorical-bin' column='[startday]' new-bin='true'>
                 <bin default-name='false' value='&quot;Weekdays&quot;'>
@@ -615,7 +712,9 @@
                 </bin>
               </calculation>
             </column>
+            <column caption='Gender' datatype='integer' name='[gender]' role='measure' type='quantitative' />
             <column-instance column='[startdate]' derivation='Month' name='[mn:startdate:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[gender]' derivation='None' name='[none:gender:ok]' pivot='key' type='ordinal' />
             <column-instance column='[startday]' derivation='None' name='[none:startday:nk]' pivot='key' type='nominal' />
             <column caption='Start Station Name' datatype='string' name='[start station name]' role='dimension' type='nominal' />
             <column caption='Startdate' datatype='datetime' name='[startdate]' role='dimension' type='ordinal' />
@@ -627,7 +726,13 @@
             <column-instance column='[startdate]' derivation='Year' name='[yr:startdate:ok]' pivot='key' type='ordinal' />
           </datasource-dependencies>
           <filter class='categorical' column='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (FilterWeekdayOrWeekend)]'>
-            <groupfilter function='member' level='[Weekdays]' member='&quot;Weekends&quot;' user:ui-action-filter='[Action6_8FED768FF20341679DD8A7FE8CC21CF4]' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+            <groupfilter function='level-members' level='[Weekdays]' user:ui-action-filter='[Action6_8FED768FF20341679DD8A7FE8CC21CF4]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='categorical' column='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (Gender (group),Gender)]'>
+            <groupfilter function='crossjoin' user:ui-action-filter='[Action17_ABB44C37156B4BCABF6760F2D41B5B17]' user:ui-enumeration='all' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[Gender (group)]' />
+              <groupfilter function='level-members' level='[none:gender:ok]' />
+            </groupfilter>
           </filter>
           <filter class='categorical' column='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (MONTH(Startdate))]'>
             <groupfilter function='level-members' level='[mn:startdate:ok]' user:ui-action-filter='[Action4_9AED36F9A5634BCDA2D44429555DD0BF]' user:ui-enumeration='all' user:ui-marker='enumerate' />
@@ -646,6 +751,7 @@
             <column>[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (MONTH(Startdate))]</column>
             <column>[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (Start Station Name)]</column>
             <column>[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (FilterWeekdayOrWeekend)]</column>
+            <column>[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (Gender (group),Gender)]</column>
           </slices>
           <aggregation value='true' />
         </view>
@@ -702,7 +808,14 @@
       </table>
       <simple-id uuid='{46884B4C-88AB-48B7-B617-AC0D253CA97B}' />
     </worksheet>
-    <worksheet name='Busiest Hour'>
+    <worksheet name='Busiest Day (by Gender)'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run fontname='Telugu MN'>&lt;Sheet Name&gt;</run>
+          </formatted-text>
+        </title>
+      </layout-options>
       <table>
         <view>
           <datasources>
@@ -711,6 +824,19 @@
           <datasource-dependencies datasource='federated.1kx1r620vvdyrn1ayrezz1oo11ir'>
             <column caption='CountbyStation' datatype='integer' name='[Calculation_5524157564909359105]' role='measure' type='quantitative'>
               <calculation class='tableau' formula='COUNT([starttime]) + COUNT([stoptime])' />
+            </column>
+            <column datatype='string' name='[Gender (group)]' role='dimension' type='ordinal'>
+              <calculation class='categorical-bin' column='[gender]' new-bin='true'>
+                <bin default-name='false' value='&quot;Female&quot;'>
+                  <value>2</value>
+                </bin>
+                <bin default-name='false' value='&quot;Male&quot;'>
+                  <value>1</value>
+                </bin>
+                <bin default-name='false' value='&quot;Unknown&quot;'>
+                  <value>0</value>
+                </bin>
+              </calculation>
             </column>
             <column caption='FilterWeekdayOrWeekend' datatype='string' name='[Weekdays]' role='dimension' type='nominal'>
               <calculation class='categorical-bin' column='[startday]' new-bin='true'>
@@ -727,9 +853,10 @@
                 </bin>
               </calculation>
             </column>
-            <column-instance column='[starttime]' derivation='Hour' name='[hr:starttime:ok]' pivot='key' type='ordinal' />
-            <column-instance column='[starttime]' derivation='Hour' name='[hr:starttime:qk]' pivot='key' type='quantitative' />
+            <column caption='Gender' datatype='integer' name='[gender]' role='measure' type='quantitative' />
             <column-instance column='[startdate]' derivation='Month' name='[mn:startdate:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[gender]' derivation='None' name='[none:gender:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[startday]' derivation='None' name='[none:startday:nk]' pivot='key' type='nominal' />
             <column caption='Start Station Name' datatype='string' name='[start station name]' role='dimension' type='nominal' />
             <column caption='Startdate' datatype='datetime' name='[startdate]' role='dimension' type='ordinal' />
             <column caption='Startday' datatype='string' name='[startday]' role='dimension' type='nominal' />
@@ -739,7 +866,153 @@
             <column-instance column='[startdate]' derivation='Year' name='[yr:startdate:ok]' pivot='key' type='ordinal' />
           </datasource-dependencies>
           <filter class='categorical' column='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (FilterWeekdayOrWeekend)]'>
-            <groupfilter function='member' level='[Weekdays]' member='&quot;Weekends&quot;' user:ui-action-filter='[Action6_8FED768FF20341679DD8A7FE8CC21CF4]' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+            <groupfilter function='member' level='[Weekdays]' member='&quot;Weekdays&quot;' user:ui-action-filter='[Action6_8FED768FF20341679DD8A7FE8CC21CF4]' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='categorical' column='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (Gender (group),Gender)]'>
+            <groupfilter function='crossjoin' user:ui-action-filter='[Action17_ABB44C37156B4BCABF6760F2D41B5B17]' user:ui-enumeration='all' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[Gender (group)]' />
+              <groupfilter function='level-members' level='[none:gender:ok]' />
+            </groupfilter>
+          </filter>
+          <filter class='categorical' column='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (MONTH(Startdate))]'>
+            <groupfilter function='level-members' level='[mn:startdate:ok]' user:ui-action-filter='[Action4_9AED36F9A5634BCDA2D44429555DD0BF]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='categorical' column='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (Start Station Name)]'>
+            <groupfilter function='level-members' level='[start station name]' user:ui-action-filter='[Action6_2329E35C99694A10B4BE6B26686AFBFE]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='categorical' column='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (YEAR(Startdate))]'>
+            <groupfilter function='level-members' level='[yr:startdate:ok]' user:ui-action-filter='[Action3_BA71957B801B4DBAAFDF16721FF49CCF]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <shelf-sorts>
+            <shelf-sort-v2 dimension-to-sort='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[none:startday:nk]' direction='DESC' is-on-innermost-dimension='true' measure-to-sort-by='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[usr:Calculation_5524157564909359105:qk]' shelf='columns' />
+          </shelf-sorts>
+          <slices>
+            <column>[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (YEAR(Startdate))]</column>
+            <column>[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (MONTH(Startdate))]</column>
+            <column>[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (Start Station Name)]</column>
+            <column>[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (FilterWeekdayOrWeekend)]</column>
+            <column>[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (Gender (group),Gender)]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <encoding attr='space' class='0' domain-expand='false' field='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[usr:Calculation_5524157564909359105:qk]' field-type='quantitative' scope='rows' type='space' />
+            <format attr='title' class='0' field='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[usr:Calculation_5524157564909359105:qk]' scope='rows' value='Bike Visitors (All Stations)' />
+            <format attr='height' field='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[none:startday:nk]' value='78' />
+          </style-rule>
+          <style-rule element='mark'>
+            <encoding attr='size-bar' field='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[usr:Calculation_5524157564909359105:qk]' field-type='quantitative' max-size='1' min-size='0.005' type='centersize' />
+          </style-rule>
+          <style-rule element='worksheet'>
+            <format attr='display-field-labels' scope='cols' value='false' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Shape' />
+            <mark-sizing mark-sizing-setting='marks-scaling-off' />
+            <encodings>
+              <color column='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Gender (group)]' />
+            </encodings>
+            <customized-tooltip>
+              <formatted-text>
+                <run fontcolor='#787878'>Gender (group):&#9;</run>
+                <run bold='true'><![CDATA[<[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Gender (group)]>]]></run>
+                <run>Æ&#10;</run>
+                <run fontcolor='#787878'>Startday:&#9;</run>
+                <run bold='true'><![CDATA[<[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[none:startday:nk]>]]></run>
+                <run>Æ&#10;</run>
+                <run fontcolor='#787878'>Number of Bike Visitors:&#9;</run>
+                <run bold='true'><![CDATA[<[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[usr:Calculation_5524157564909359105:qk]>]]></run>
+              </formatted-text>
+            </customized-tooltip>
+            <style>
+              <style-rule element='mark'>
+                <format attr='has-stroke' value='false' />
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-line-first' value='true' />
+                <format attr='mark-labels-line-last' value='true' />
+                <format attr='mark-labels-range-min' value='true' />
+                <format attr='mark-labels-range-max' value='true' />
+                <format attr='mark-labels-mode' value='all' />
+                <format attr='mark-labels-range-scope' value='pane' />
+                <format attr='mark-labels-range-field' value='' />
+                <format attr='shape' value='circle' />
+                <format attr='size' value='0.42779004573822021' />
+                <format attr='mark-transparency' value='255' />
+                <format attr='mark-labels-show' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[usr:Calculation_5524157564909359105:qk]</rows>
+        <cols>[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[none:startday:nk]</cols>
+      </table>
+      <simple-id uuid='{69964015-3FE9-45E9-9742-50D9CE643FC6}' />
+    </worksheet>
+    <worksheet name='Busiest Hour'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='citibikes_dataCombined' name='federated.1kx1r620vvdyrn1ayrezz1oo11ir' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1kx1r620vvdyrn1ayrezz1oo11ir'>
+            <column caption='CountbyStation' datatype='integer' name='[Calculation_5524157564909359105]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='COUNT([starttime]) + COUNT([stoptime])' />
+            </column>
+            <column datatype='string' name='[Gender (group)]' role='dimension' type='ordinal'>
+              <calculation class='categorical-bin' column='[gender]' new-bin='true'>
+                <bin default-name='false' value='&quot;Female&quot;'>
+                  <value>2</value>
+                </bin>
+                <bin default-name='false' value='&quot;Male&quot;'>
+                  <value>1</value>
+                </bin>
+                <bin default-name='false' value='&quot;Unknown&quot;'>
+                  <value>0</value>
+                </bin>
+              </calculation>
+            </column>
+            <column caption='FilterWeekdayOrWeekend' datatype='string' name='[Weekdays]' role='dimension' type='nominal'>
+              <calculation class='categorical-bin' column='[startday]' new-bin='true'>
+                <bin default-name='false' value='&quot;Weekdays&quot;'>
+                  <value>&quot;Friday&quot;</value>
+                  <value>&quot;Monday&quot;</value>
+                  <value>&quot;Thursday&quot;</value>
+                  <value>&quot;Tuesday&quot;</value>
+                  <value>&quot;Wednesday&quot;</value>
+                </bin>
+                <bin default-name='false' value='&quot;Weekends&quot;'>
+                  <value>&quot;Saturday&quot;</value>
+                  <value>&quot;Sunday&quot;</value>
+                </bin>
+              </calculation>
+            </column>
+            <column caption='Gender' datatype='integer' name='[gender]' role='measure' type='quantitative' />
+            <column-instance column='[starttime]' derivation='Hour' name='[hr:starttime:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[starttime]' derivation='Hour' name='[hr:starttime:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[startdate]' derivation='Month' name='[mn:startdate:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[gender]' derivation='None' name='[none:gender:ok]' pivot='key' type='ordinal' />
+            <column caption='Start Station Name' datatype='string' name='[start station name]' role='dimension' type='nominal' />
+            <column caption='Startdate' datatype='datetime' name='[startdate]' role='dimension' type='ordinal' />
+            <column caption='Startday' datatype='string' name='[startday]' role='dimension' type='nominal' />
+            <column caption='Starttime' datatype='datetime' name='[starttime]' role='dimension' type='ordinal' />
+            <column caption='Stoptime' datatype='datetime' name='[stoptime]' role='dimension' type='ordinal' />
+            <column-instance column='[Calculation_5524157564909359105]' derivation='User' name='[usr:Calculation_5524157564909359105:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[startdate]' derivation='Year' name='[yr:startdate:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (FilterWeekdayOrWeekend)]'>
+            <groupfilter function='level-members' level='[Weekdays]' user:ui-action-filter='[Action6_8FED768FF20341679DD8A7FE8CC21CF4]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='categorical' column='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (Gender (group),Gender)]'>
+            <groupfilter function='crossjoin' user:ui-action-filter='[Action17_ABB44C37156B4BCABF6760F2D41B5B17]' user:ui-enumeration='all' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[Gender (group)]' />
+              <groupfilter function='level-members' level='[none:gender:ok]' />
+            </groupfilter>
           </filter>
           <filter class='categorical' column='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (MONTH(Startdate))]'>
             <groupfilter function='level-members' level='[mn:startdate:ok]' user:ui-action-filter='[Action4_9AED36F9A5634BCDA2D44429555DD0BF]' user:ui-enumeration='all' user:ui-marker='enumerate' />
@@ -763,6 +1036,7 @@
             <column>[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (YEAR(Startdate))]</column>
             <column>[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (Start Station Name)]</column>
             <column>[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (Startday)]</column>
+            <column>[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (Gender (group),Gender)]</column>
           </slices>
           <aggregation value='true' />
         </view>
@@ -859,6 +1133,186 @@
       </table>
       <simple-id uuid='{32715637-5F74-4D5B-8087-02C4CD5EC005}' />
     </worksheet>
+    <worksheet name='Busiest Hour (by Gender)'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='citibikes_dataCombined' name='federated.1kx1r620vvdyrn1ayrezz1oo11ir' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1kx1r620vvdyrn1ayrezz1oo11ir'>
+            <column caption='CountbyStation' datatype='integer' name='[Calculation_5524157564909359105]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='COUNT([starttime]) + COUNT([stoptime])' />
+            </column>
+            <column datatype='string' name='[Gender (group)]' role='dimension' type='ordinal'>
+              <calculation class='categorical-bin' column='[gender]' new-bin='true'>
+                <bin default-name='false' value='&quot;Female&quot;'>
+                  <value>2</value>
+                </bin>
+                <bin default-name='false' value='&quot;Male&quot;'>
+                  <value>1</value>
+                </bin>
+                <bin default-name='false' value='&quot;Unknown&quot;'>
+                  <value>0</value>
+                </bin>
+              </calculation>
+            </column>
+            <column caption='FilterWeekdayOrWeekend' datatype='string' name='[Weekdays]' role='dimension' type='nominal'>
+              <calculation class='categorical-bin' column='[startday]' new-bin='true'>
+                <bin default-name='false' value='&quot;Weekdays&quot;'>
+                  <value>&quot;Friday&quot;</value>
+                  <value>&quot;Monday&quot;</value>
+                  <value>&quot;Thursday&quot;</value>
+                  <value>&quot;Tuesday&quot;</value>
+                  <value>&quot;Wednesday&quot;</value>
+                </bin>
+                <bin default-name='false' value='&quot;Weekends&quot;'>
+                  <value>&quot;Saturday&quot;</value>
+                  <value>&quot;Sunday&quot;</value>
+                </bin>
+              </calculation>
+            </column>
+            <column caption='Gender' datatype='integer' name='[gender]' role='measure' type='quantitative' />
+            <column-instance column='[starttime]' derivation='Hour' name='[hr:starttime:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[starttime]' derivation='Hour' name='[hr:starttime:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[startdate]' derivation='Month' name='[mn:startdate:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[gender]' derivation='None' name='[none:gender:ok]' pivot='key' type='ordinal' />
+            <column caption='Start Station Name' datatype='string' name='[start station name]' role='dimension' type='nominal' />
+            <column caption='Startdate' datatype='datetime' name='[startdate]' role='dimension' type='ordinal' />
+            <column caption='Startday' datatype='string' name='[startday]' role='dimension' type='nominal' />
+            <column caption='Starttime' datatype='datetime' name='[starttime]' role='dimension' type='ordinal' />
+            <column caption='Stoptime' datatype='datetime' name='[stoptime]' role='dimension' type='ordinal' />
+            <column-instance column='[Calculation_5524157564909359105]' derivation='User' name='[usr:Calculation_5524157564909359105:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[startdate]' derivation='Year' name='[yr:startdate:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (FilterWeekdayOrWeekend)]'>
+            <groupfilter function='member' level='[Weekdays]' member='&quot;Weekdays&quot;' user:ui-action-filter='[Action6_8FED768FF20341679DD8A7FE8CC21CF4]' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='categorical' column='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (Gender (group),Gender)]'>
+            <groupfilter function='crossjoin' user:ui-action-filter='[Action17_ABB44C37156B4BCABF6760F2D41B5B17]' user:ui-enumeration='all' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[Gender (group)]' />
+              <groupfilter function='level-members' level='[none:gender:ok]' />
+            </groupfilter>
+          </filter>
+          <filter class='categorical' column='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (MONTH(Startdate))]'>
+            <groupfilter function='level-members' level='[mn:startdate:ok]' user:ui-action-filter='[Action4_9AED36F9A5634BCDA2D44429555DD0BF]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='categorical' column='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (Start Station Name)]'>
+            <groupfilter function='level-members' level='[start station name]' user:ui-action-filter='[Action6_2329E35C99694A10B4BE6B26686AFBFE]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='categorical' column='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (Startday)]'>
+            <groupfilter function='level-members' level='[startday]' user:ui-action-filter='[Action8_BF931A95105042B4A51704D4B568E55A]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='categorical' column='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (YEAR(Startdate))]'>
+            <groupfilter function='level-members' level='[yr:startdate:ok]' user:ui-action-filter='[Action3_BA71957B801B4DBAAFDF16721FF49CCF]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='categorical' column='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[hr:starttime:ok]'>
+            <groupfilter from='0' function='range' level='[hr:starttime:ok]' to='23' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[hr:starttime:ok]</column>
+            <column>[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (FilterWeekdayOrWeekend)]</column>
+            <column>[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (MONTH(Startdate))]</column>
+            <column>[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (YEAR(Startdate))]</column>
+            <column>[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (Start Station Name)]</column>
+            <column>[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (Startday)]</column>
+            <column>[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (Gender (group),Gender)]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <format attr='title' class='0' field='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[usr:Calculation_5524157564909359105:qk]' scope='rows' value='Number of Bike Visitors' />
+            <encoding attr='space' class='0' field='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[hr:starttime:qk]' field-type='quantitative' max='24' min='0' range-type='fixed' scope='cols' type='space' />
+            <format attr='title' class='0' field='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[hr:starttime:qk]' scope='cols' value='Hour (24 hr clock)' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Gender (group)]' />
+              <size column='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[usr:Calculation_5524157564909359105:qk]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[usr:Calculation_5524157564909359105:qk]</rows>
+        <cols>[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[hr:starttime:qk]</cols>
+        <annotations>
+          <annotation class='point' id='0' mark-position='1' pullback='12' text-width='180'>
+            <formatted-text>
+              <run fontcolor='#787878'>Hour of Starttime: </run>
+              <run bold='true'><![CDATA[<[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[hr:starttime:qk]>]]></run>
+              <run>Æ&#10;</run>
+              <run fontcolor='#787878'>CountbyStation: </run>
+              <run bold='true'><![CDATA[<[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[usr:Calculation_5524157564909359105:qk]>]]></run>
+            </formatted-text>
+            <point>
+              <visual-coordinate class='mark'>
+                <tuple-reference>
+                  <tuple-descriptor>
+                    <pane-descriptor>
+                      <x-fields>
+                        <field>[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[hr:starttime:qk]</field>
+                      </x-fields>
+                      <y-fields>
+                        <field>[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[usr:Calculation_5524157564909359105:qk]</field>
+                      </y-fields>
+                    </pane-descriptor>
+                    <columns>
+                      <field>[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[hr:starttime:qk]</field>
+                      <field>[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[usr:Calculation_5524157564909359105:qk]</field>
+                    </columns>
+                  </tuple-descriptor>
+                  <tuple>
+                    <value>8</value>
+                    <value>37030</value>
+                  </tuple>
+                </tuple-reference>
+              </visual-coordinate>
+            </point>
+            <body x='-116' y='-54' />
+          </annotation>
+          <annotation class='point' id='1' mark-position='1' pullback='12' text-width='180'>
+            <formatted-text>
+              <run fontcolor='#787878'>Hour of Starttime: </run>
+              <run bold='true'><![CDATA[<[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[hr:starttime:qk]>]]></run>
+              <run>Æ&#10;</run>
+              <run fontcolor='#787878'>CountbyStation: </run>
+              <run bold='true'><![CDATA[<[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[usr:Calculation_5524157564909359105:qk]>]]></run>
+            </formatted-text>
+            <point>
+              <visual-coordinate class='mark'>
+                <tuple-reference>
+                  <tuple-descriptor>
+                    <pane-descriptor>
+                      <x-fields>
+                        <field>[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[hr:starttime:qk]</field>
+                      </x-fields>
+                      <y-fields>
+                        <field>[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[usr:Calculation_5524157564909359105:qk]</field>
+                      </y-fields>
+                    </pane-descriptor>
+                    <columns>
+                      <field>[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[hr:starttime:qk]</field>
+                      <field>[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[usr:Calculation_5524157564909359105:qk]</field>
+                    </columns>
+                  </tuple-descriptor>
+                  <tuple>
+                    <value>18</value>
+                    <value>78178</value>
+                  </tuple>
+                </tuple-reference>
+              </visual-coordinate>
+            </point>
+            <body x='-175' y='26' />
+          </annotation>
+        </annotations>
+      </table>
+      <simple-id uuid='{E9B49E9C-FA07-4156-B71F-7322BCE7A629}' />
+    </worksheet>
     <worksheet name='Check index count'>
       <table>
         <view>
@@ -894,6 +1348,119 @@
       </table>
       <simple-id uuid='{F63C9933-9989-48DF-989A-786407FC9714}' />
     </worksheet>
+    <worksheet name='Gender'>
+      <layout-options>
+        <title>
+          <formatted-text />
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='citibikes_dataCombined' name='federated.1kx1r620vvdyrn1ayrezz1oo11ir' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1kx1r620vvdyrn1ayrezz1oo11ir'>
+            <column caption='CountbyStation' datatype='integer' name='[Calculation_5524157564909359105]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='COUNT([starttime]) + COUNT([stoptime])' />
+            </column>
+            <column datatype='string' name='[Gender (group)]' role='dimension' type='ordinal'>
+              <calculation class='categorical-bin' column='[gender]' new-bin='true'>
+                <bin default-name='false' value='&quot;Female&quot;'>
+                  <value>2</value>
+                </bin>
+                <bin default-name='false' value='&quot;Male&quot;'>
+                  <value>1</value>
+                </bin>
+                <bin default-name='false' value='&quot;Unknown&quot;'>
+                  <value>0</value>
+                </bin>
+              </calculation>
+            </column>
+            <column caption='FilterWeekdayOrWeekend' datatype='string' name='[Weekdays]' role='dimension' type='nominal'>
+              <calculation class='categorical-bin' column='[startday]' new-bin='true'>
+                <bin default-name='false' value='&quot;Weekdays&quot;'>
+                  <value>&quot;Friday&quot;</value>
+                  <value>&quot;Monday&quot;</value>
+                  <value>&quot;Thursday&quot;</value>
+                  <value>&quot;Tuesday&quot;</value>
+                  <value>&quot;Wednesday&quot;</value>
+                </bin>
+                <bin default-name='false' value='&quot;Weekends&quot;'>
+                  <value>&quot;Saturday&quot;</value>
+                  <value>&quot;Sunday&quot;</value>
+                </bin>
+              </calculation>
+            </column>
+            <column caption='Gender' datatype='integer' name='[gender]' role='measure' type='quantitative' />
+            <column-instance column='[gender]' derivation='None' name='[none:gender:qk]' pivot='key' type='quantitative' />
+            <column caption='Startdate' datatype='datetime' name='[startdate]' role='dimension' type='ordinal' />
+            <column caption='Startday' datatype='string' name='[startday]' role='dimension' type='nominal' />
+            <column caption='Starttime' datatype='datetime' name='[starttime]' role='dimension' type='ordinal' />
+            <column caption='Stoptime' datatype='datetime' name='[stoptime]' role='dimension' type='ordinal' />
+            <column-instance column='[Calculation_5524157564909359105]' derivation='User' name='[usr:Calculation_5524157564909359105:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[startdate]' derivation='Year' name='[yr:startdate:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (FilterWeekdayOrWeekend)]'>
+            <groupfilter function='member' level='[Weekdays]' member='&quot;Weekdays&quot;' user:ui-action-filter='[Action15_C22910A1171842D38F0BCC423F17434F]' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='categorical' column='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (YEAR(Startdate))]'>
+            <groupfilter function='level-members' level='[yr:startdate:ok]' user:ui-action-filter='[Action12_E91B5B5F2A9146E48C193E48DDF001B7]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (YEAR(Startdate))]</column>
+            <column>[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (FilterWeekdayOrWeekend)]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Circle' />
+            <encodings>
+              <size column='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[usr:Calculation_5524157564909359105:qk]' />
+              <text column='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Gender (group)]' />
+              <text column='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[none:gender:qk]' />
+              <color column='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Gender (group)]' />
+            </encodings>
+            <customized-tooltip>
+              <formatted-text>
+                <run fontcolor='#787878'>Gender (group):&#9;</run>
+                <run bold='true'><![CDATA[<[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Gender (group)]>]]></run>
+                <run>Æ&#10;</run>
+                <run fontcolor='#787878'>CountbyStation:&#9;</run>
+                <run bold='true'><![CDATA[<[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[usr:Calculation_5524157564909359105:qk]>]]></run>
+              </formatted-text>
+            </customized-tooltip>
+            <customized-label>
+              <formatted-text>
+                <run>&lt;</run>
+                <run>[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Gender (group)]</run>
+                <run>&gt;</run>
+              </formatted-text>
+            </customized-label>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-line-first' value='true' />
+                <format attr='mark-labels-line-last' value='true' />
+                <format attr='mark-labels-range-min' value='true' />
+                <format attr='mark-labels-range-max' value='true' />
+                <format attr='mark-labels-mode' value='all' />
+                <format attr='mark-labels-range-scope' value='pane' />
+                <format attr='mark-labels-range-field' value='' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{5EE6497C-2ED0-4F53-97D4-A88C805561CF}' />
+    </worksheet>
     <worksheet name='MAP - Most Popular Station'>
       <layout-options>
         <title>
@@ -914,6 +1481,19 @@
             <column caption='CountbyStation' datatype='integer' name='[Calculation_5524157564909359105]' role='measure' type='quantitative'>
               <calculation class='tableau' formula='COUNT([starttime]) + COUNT([stoptime])' />
             </column>
+            <column datatype='string' name='[Gender (group)]' role='dimension' type='ordinal'>
+              <calculation class='categorical-bin' column='[gender]' new-bin='true'>
+                <bin default-name='false' value='&quot;Female&quot;'>
+                  <value>2</value>
+                </bin>
+                <bin default-name='false' value='&quot;Male&quot;'>
+                  <value>1</value>
+                </bin>
+                <bin default-name='false' value='&quot;Unknown&quot;'>
+                  <value>0</value>
+                </bin>
+              </calculation>
+            </column>
             <column caption='FilterWeekdayOrWeekend' datatype='string' name='[Weekdays]' role='dimension' type='nominal'>
               <calculation class='categorical-bin' column='[startday]' new-bin='true'>
                 <bin default-name='false' value='&quot;Weekdays&quot;'>
@@ -932,7 +1512,10 @@
             <column-instance column='[start station latitude]' derivation='Avg' name='[avg:start station latitude:qk]' pivot='key' type='quantitative' />
             <column-instance column='[start station longitude]' derivation='Avg' name='[avg:start station longitude:qk]' pivot='key' type='quantitative' />
             <column-instance column='[tripduration]' derivation='Avg' name='[avg:tripduration:qk]' pivot='key' type='quantitative' />
+            <column caption='End Station Name' datatype='string' name='[end station name]' role='dimension' type='nominal' />
+            <column caption='Gender' datatype='integer' name='[gender]' role='measure' type='quantitative' />
             <column-instance column='[startdate]' derivation='Month' name='[mn:startdate:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[gender]' derivation='None' name='[none:gender:ok]' pivot='key' type='ordinal' />
             <column-instance column='[start station name]' derivation='None' name='[none:start station name:nk]' pivot='key' type='nominal' />
             <column aggregation='Avg' caption='Start Station Latitude' datatype='real' name='[start station latitude]' role='measure' semantic-role='[Geographical].[Latitude]' type='quantitative' />
             <column aggregation='Avg' caption='Start Station Longitude' datatype='real' name='[start station longitude]' role='measure' semantic-role='[Geographical].[Longitude]' type='quantitative' />
@@ -945,17 +1528,29 @@
             <column-instance column='[Calculation_5524157564909359105]' derivation='User' name='[usr:Calculation_5524157564909359105:qk]' pivot='key' type='quantitative' />
             <column-instance column='[startdate]' derivation='Year' name='[yr:startdate:ok]' pivot='key' type='ordinal' />
           </datasource-dependencies>
+          <filter class='categorical' column='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (End Station Name)]'>
+            <groupfilter function='level-members' level='[end station name]' user:ui-action-filter='[Action10_64A6132FE92C4FD0ADA3EA31F3C12B6E]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
           <filter class='categorical' column='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (FilterWeekdayOrWeekend)]'>
-            <groupfilter function='member' level='[Weekdays]' member='&quot;Weekends&quot;' user:ui-action-filter='[Action6_8FED768FF20341679DD8A7FE8CC21CF4]' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+            <groupfilter function='level-members' level='[Weekdays]' user:ui-action-filter='[Action6_8FED768FF20341679DD8A7FE8CC21CF4]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='categorical' column='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (Gender (group),Gender)]'>
+            <groupfilter function='crossjoin' user:ui-action-filter='[Action17_ABB44C37156B4BCABF6760F2D41B5B17]' user:ui-enumeration='all' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[Gender (group)]' />
+              <groupfilter function='level-members' level='[none:gender:ok]' />
+            </groupfilter>
           </filter>
           <filter class='categorical' column='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (MONTH(Startdate))]'>
             <groupfilter function='level-members' level='[mn:startdate:ok]' user:ui-action-filter='[Action4_9AED36F9A5634BCDA2D44429555DD0BF]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='categorical' column='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (Start Station Name)]'>
+            <groupfilter function='level-members' level='[start station name]' user:ui-action-filter='[Action9_E6335281D4864A96B5374574102826AA]' user:ui-enumeration='all' user:ui-marker='enumerate' />
           </filter>
           <filter class='categorical' column='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (Startday)]'>
             <groupfilter function='level-members' level='[startday]' user:ui-action-filter='[Action8_BF931A95105042B4A51704D4B568E55A]' user:ui-enumeration='all' user:ui-marker='enumerate' />
           </filter>
           <filter class='categorical' column='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (YEAR(Startdate))]'>
-            <groupfilter function='level-members' level='[yr:startdate:ok]' user:ui-action-filter='[Action1_CA3F87D73ABF41888658897E60F0CD79]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+            <groupfilter function='member' level='[yr:startdate:ok]' member='2021' user:ui-action-filter='[Action1_CA3F87D73ABF41888658897E60F0CD79]' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
           </filter>
           <filter class='categorical' column='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[none:start station name:nk]'>
             <groupfilter count='10' end='top' function='end' units='records' user:ui-marker='end' user:ui-top-by-field='true'>
@@ -970,14 +1565,13 @@
             <column>[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (FilterWeekdayOrWeekend)]</column>
             <column>[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (MONTH(Startdate))]</column>
             <column>[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (Startday)]</column>
+            <column>[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (Start Station Name)]</column>
+            <column>[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (End Station Name)]</column>
+            <column>[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (Gender (group),Gender)]</column>
           </slices>
           <aggregation value='true' />
         </view>
         <style>
-          <style-rule element='axis'>
-            <encoding attr='space' class='0' field='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[avg:start station longitude:qk]' field-type='quantitative' max='-8238283.7527288161' min='-8249219.3899546042' projection='EPSG:3857' range-type='fixed' scope='cols' type='space' />
-            <encoding attr='space' class='0' field='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[avg:start station latitude:qk]' field-type='quantitative' max='4980495.076740481' min='4969850.5021867156' projection='EPSG:3857' range-type='fixed' scope='rows' type='space' />
-          </style-rule>
           <style-rule element='map-layer'>
             <format attr='enabled' id='tunnel-service-link-track-case' value='true' />
             <format attr='enabled' id='tunnel-street_limited-case' value='true' />
@@ -1630,6 +2224,19 @@
             <column caption='CountbyStation' datatype='integer' name='[Calculation_5524157564909359105]' role='measure' type='quantitative'>
               <calculation class='tableau' formula='COUNT([starttime]) + COUNT([stoptime])' />
             </column>
+            <column datatype='string' name='[Gender (group)]' role='dimension' type='ordinal'>
+              <calculation class='categorical-bin' column='[gender]' new-bin='true'>
+                <bin default-name='false' value='&quot;Female&quot;'>
+                  <value>2</value>
+                </bin>
+                <bin default-name='false' value='&quot;Male&quot;'>
+                  <value>1</value>
+                </bin>
+                <bin default-name='false' value='&quot;Unknown&quot;'>
+                  <value>0</value>
+                </bin>
+              </calculation>
+            </column>
             <column caption='FilterWeekdayOrWeekend' datatype='string' name='[Weekdays]' role='dimension' type='nominal'>
               <calculation class='categorical-bin' column='[startday]' new-bin='true'>
                 <bin default-name='false' value='&quot;Weekdays&quot;'>
@@ -1645,7 +2252,10 @@
                 </bin>
               </calculation>
             </column>
+            <column caption='End Station Name' datatype='string' name='[end station name]' role='dimension' type='nominal' />
+            <column caption='Gender' datatype='integer' name='[gender]' role='measure' type='quantitative' />
             <column-instance column='[startdate]' derivation='Month' name='[mn:startdate:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[gender]' derivation='None' name='[none:gender:ok]' pivot='key' type='ordinal' />
             <column caption='Start Station Name' datatype='string' name='[start station name]' role='dimension' type='nominal' />
             <column caption='Startdate' datatype='datetime' name='[startdate]' role='dimension' type='ordinal' />
             <column caption='Startday' datatype='string' name='[startday]' role='dimension' type='nominal' />
@@ -1654,8 +2264,17 @@
             <column-instance column='[Calculation_5524157564909359105]' derivation='User' name='[usr:Calculation_5524157564909359105:qk]' pivot='key' type='quantitative' />
             <column-instance column='[startdate]' derivation='Year' name='[yr:startdate:ok]' pivot='key' type='ordinal' />
           </datasource-dependencies>
+          <filter class='categorical' column='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (End Station Name)]'>
+            <groupfilter function='level-members' level='[end station name]' user:ui-action-filter='[Action10_64A6132FE92C4FD0ADA3EA31F3C12B6E]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
           <filter class='categorical' column='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (FilterWeekdayOrWeekend)]'>
-            <groupfilter function='member' level='[Weekdays]' member='&quot;Weekends&quot;' user:ui-action-filter='[Action6_8FED768FF20341679DD8A7FE8CC21CF4]' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+            <groupfilter function='member' level='[Weekdays]' member='&quot;Weekdays&quot;' user:ui-action-filter='[Action6_8FED768FF20341679DD8A7FE8CC21CF4]' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='categorical' column='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (Gender (group),Gender)]'>
+            <groupfilter function='crossjoin' user:ui-action-filter='[Action17_ABB44C37156B4BCABF6760F2D41B5B17]' user:ui-enumeration='all' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[Gender (group)]' />
+              <groupfilter function='level-members' level='[none:gender:ok]' />
+            </groupfilter>
           </filter>
           <filter class='categorical' column='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (Start Station Name)]'>
             <groupfilter function='level-members' level='[start station name]' user:ui-action-filter='[Action6_394C889E1F724C1C9B19A011DCFE6FF2]' user:ui-enumeration='all' user:ui-marker='enumerate' />
@@ -1671,6 +2290,8 @@
             <column>[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (Start Station Name)]</column>
             <column>[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (FilterWeekdayOrWeekend)]</column>
             <column>[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (Startday)]</column>
+            <column>[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (End Station Name)]</column>
+            <column>[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (Gender (group),Gender)]</column>
           </slices>
           <aggregation value='true' />
         </view>
@@ -1838,6 +2459,7 @@
             <column caption='index' datatype='integer' name='[F1]' role='measure' type='quantitative' />
             <column-instance column='[tripduration]' derivation='Avg' name='[avg:tripduration:qk]' pivot='key' type='quantitative' />
             <column-instance column='[F1]' derivation='Count' name='[cnt:F1:qk]' pivot='key' type='quantitative' />
+            <column caption='End Station Name' datatype='string' name='[end station name]' role='dimension' type='nominal' />
             <column-instance column='[startdate]' derivation='Month' name='[mn:startdate:ok]' pivot='key' type='ordinal' />
             <column-instance column='[start station name]' derivation='None' name='[none:start station name:nk]' pivot='key' type='nominal' />
             <column caption='Start Station Name' datatype='string' name='[start station name]' role='dimension' type='nominal' />
@@ -1845,6 +2467,9 @@
             <column caption='Tripduration' datatype='integer' name='[tripduration]' role='measure' type='quantitative' />
             <column-instance column='[startdate]' derivation='Year' name='[yr:startdate:ok]' pivot='key' type='ordinal' />
           </datasource-dependencies>
+          <filter class='categorical' column='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (End Station Name)]'>
+            <groupfilter function='level-members' level='[end station name]' user:ui-action-filter='[Action10_64A6132FE92C4FD0ADA3EA31F3C12B6E]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
           <filter class='categorical' column='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (MONTH(Startdate))]'>
             <groupfilter function='level-members' level='[mn:startdate:ok]' user:ui-action-filter='[Action2_1CD800D43CE84756B5E82789F7C44061]' user:ui-enumeration='all' user:ui-marker='enumerate' />
           </filter>
@@ -1866,6 +2491,7 @@
             <column>[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (YEAR(Startdate))]</column>
             <column>[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (MONTH(Startdate))]</column>
             <column>[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (Start Station Name)]</column>
+            <column>[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (End Station Name)]</column>
           </slices>
           <aggregation value='true' />
         </view>
@@ -1954,10 +2580,12 @@
       </table>
       <simple-id uuid='{F7DCB50A-5DE7-4E94-AF12-F48A30D37200}' />
     </worksheet>
-    <worksheet name='Weekend or Weekday'>
+    <worksheet name='Total Bike Visitors'>
       <layout-options>
         <title>
-          <formatted-text />
+          <formatted-text>
+            <run fontalignment='2' fontname='Telugu MN' fontsize='10'>&lt;Sheet Name&gt;</run>
+          </formatted-text>
         </title>
       </layout-options>
       <table>
@@ -1966,6 +2594,9 @@
             <datasource caption='citibikes_dataCombined' name='federated.1kx1r620vvdyrn1ayrezz1oo11ir' />
           </datasources>
           <datasource-dependencies datasource='federated.1kx1r620vvdyrn1ayrezz1oo11ir'>
+            <column caption='CountbyStation' datatype='integer' name='[Calculation_5524157564909359105]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='COUNT([starttime]) + COUNT([stoptime])' />
+            </column>
             <column caption='FilterWeekdayOrWeekend' datatype='string' name='[Weekdays]' role='dimension' type='nominal'>
               <calculation class='categorical-bin' column='[startday]' new-bin='true'>
                 <bin default-name='false' value='&quot;Weekdays&quot;'>
@@ -1981,12 +2612,109 @@
                 </bin>
               </calculation>
             </column>
+            <column caption='Startdate' datatype='datetime' name='[startdate]' role='dimension' type='ordinal' />
+            <column caption='Startday' datatype='string' name='[startday]' role='dimension' type='nominal' />
+            <column caption='Starttime' datatype='datetime' name='[starttime]' role='dimension' type='ordinal' />
+            <column caption='Stoptime' datatype='datetime' name='[stoptime]' role='dimension' type='ordinal' />
+            <column-instance column='[Calculation_5524157564909359105]' derivation='User' name='[usr:Calculation_5524157564909359105:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[startdate]' derivation='Year' name='[yr:startdate:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (FilterWeekdayOrWeekend)]'>
+            <groupfilter function='member' level='[Weekdays]' member='&quot;Weekdays&quot;' user:ui-action-filter='[Action15_C22910A1171842D38F0BCC423F17434F]' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='categorical' column='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (YEAR(Startdate))]'>
+            <groupfilter function='level-members' level='[yr:startdate:ok]' user:ui-action-filter='[Action12_E91B5B5F2A9146E48C193E48DDF001B7]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (YEAR(Startdate))]</column>
+            <column>[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (FilterWeekdayOrWeekend)]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[usr:Calculation_5524157564909359105:qk]' />
+            </encodings>
+            <customized-label>
+              <formatted-text>
+                <run fontname='Telugu MN' fontsize='25'>&lt;</run>
+                <run fontname='Telugu MN' fontsize='25'>[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[usr:Calculation_5524157564909359105:qk]</run>
+                <run fontname='Telugu MN' fontsize='25'>&gt;</run>
+              </formatted-text>
+            </customized-label>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{A299E628-C24F-49D9-A1C6-EFA3E74C300A}' />
+    </worksheet>
+    <worksheet name='Weekend or Weekday'>
+      <layout-options>
+        <title>
+          <formatted-text />
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='citibikes_dataCombined' name='federated.1kx1r620vvdyrn1ayrezz1oo11ir' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1kx1r620vvdyrn1ayrezz1oo11ir'>
+            <column datatype='string' name='[Gender (group)]' role='dimension' type='ordinal'>
+              <calculation class='categorical-bin' column='[gender]' new-bin='true'>
+                <bin default-name='false' value='&quot;Female&quot;'>
+                  <value>2</value>
+                </bin>
+                <bin default-name='false' value='&quot;Male&quot;'>
+                  <value>1</value>
+                </bin>
+                <bin default-name='false' value='&quot;Unknown&quot;'>
+                  <value>0</value>
+                </bin>
+              </calculation>
+            </column>
+            <column caption='FilterWeekdayOrWeekend' datatype='string' name='[Weekdays]' role='dimension' type='nominal'>
+              <calculation class='categorical-bin' column='[startday]' new-bin='true'>
+                <bin default-name='false' value='&quot;Weekdays&quot;'>
+                  <value>&quot;Friday&quot;</value>
+                  <value>&quot;Monday&quot;</value>
+                  <value>&quot;Thursday&quot;</value>
+                  <value>&quot;Tuesday&quot;</value>
+                  <value>&quot;Wednesday&quot;</value>
+                </bin>
+                <bin default-name='false' value='&quot;Weekends&quot;'>
+                  <value>&quot;Saturday&quot;</value>
+                  <value>&quot;Sunday&quot;</value>
+                </bin>
+              </calculation>
+            </column>
+            <column caption='Gender' datatype='integer' name='[gender]' role='measure' type='quantitative' />
             <column-instance column='[startdate]' derivation='Month' name='[mn:startdate:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[gender]' derivation='None' name='[none:gender:ok]' pivot='key' type='ordinal' />
             <column caption='Start Station Name' datatype='string' name='[start station name]' role='dimension' type='nominal' />
             <column caption='Startdate' datatype='datetime' name='[startdate]' role='dimension' type='ordinal' />
             <column caption='Startday' datatype='string' name='[startday]' role='dimension' type='nominal' />
             <column-instance column='[startdate]' derivation='Year' name='[yr:startdate:ok]' pivot='key' type='ordinal' />
           </datasource-dependencies>
+          <filter class='categorical' column='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (Gender (group),Gender)]'>
+            <groupfilter function='crossjoin' user:ui-action-filter='[Action17_ABB44C37156B4BCABF6760F2D41B5B17]' user:ui-enumeration='all' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[Gender (group)]' />
+              <groupfilter function='level-members' level='[none:gender:ok]' />
+            </groupfilter>
+          </filter>
           <filter class='categorical' column='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (MONTH(Startdate))]'>
             <groupfilter function='level-members' level='[mn:startdate:ok]' user:ui-action-filter='[Action4_9AED36F9A5634BCDA2D44429555DD0BF]' user:ui-enumeration='all' user:ui-marker='enumerate' />
           </filter>
@@ -2004,6 +2732,7 @@
             <column>[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (MONTH(Startdate))]</column>
             <column>[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (Start Station Name)]</column>
             <column>[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (Startday)]</column>
+            <column>[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (Gender (group),Gender)]</column>
           </slices>
           <aggregation value='true' />
         </view>
@@ -2049,6 +2778,19 @@
             <datasource caption='citibikes_dataCombined' name='federated.1kx1r620vvdyrn1ayrezz1oo11ir' />
           </datasources>
           <datasource-dependencies datasource='federated.1kx1r620vvdyrn1ayrezz1oo11ir'>
+            <column datatype='string' name='[Gender (group)]' role='dimension' type='ordinal'>
+              <calculation class='categorical-bin' column='[gender]' new-bin='true'>
+                <bin default-name='false' value='&quot;Female&quot;'>
+                  <value>2</value>
+                </bin>
+                <bin default-name='false' value='&quot;Male&quot;'>
+                  <value>1</value>
+                </bin>
+                <bin default-name='false' value='&quot;Unknown&quot;'>
+                  <value>0</value>
+                </bin>
+              </calculation>
+            </column>
             <column caption='FilterWeekdayOrWeekend' datatype='string' name='[Weekdays]' role='dimension' type='nominal'>
               <calculation class='categorical-bin' column='[startday]' new-bin='true'>
                 <bin default-name='false' value='&quot;Weekdays&quot;'>
@@ -2064,14 +2806,26 @@
                 </bin>
               </calculation>
             </column>
+            <column caption='End Station Name' datatype='string' name='[end station name]' role='dimension' type='nominal' />
+            <column caption='Gender' datatype='integer' name='[gender]' role='measure' type='quantitative' />
             <column-instance column='[startdate]' derivation='Month' name='[mn:startdate:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[gender]' derivation='None' name='[none:gender:ok]' pivot='key' type='ordinal' />
             <column caption='Start Station Name' datatype='string' name='[start station name]' role='dimension' type='nominal' />
             <column caption='Startdate' datatype='datetime' name='[startdate]' role='dimension' type='ordinal' />
             <column caption='Startday' datatype='string' name='[startday]' role='dimension' type='nominal' />
             <column-instance column='[startdate]' derivation='Year' name='[yr:startdate:ok]' pivot='key' type='ordinal' />
           </datasource-dependencies>
+          <filter class='categorical' column='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (End Station Name)]'>
+            <groupfilter function='level-members' level='[end station name]' user:ui-action-filter='[Action10_64A6132FE92C4FD0ADA3EA31F3C12B6E]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
           <filter class='categorical' column='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (FilterWeekdayOrWeekend)]'>
-            <groupfilter function='member' level='[Weekdays]' member='&quot;Weekends&quot;' user:ui-action-filter='[Action6_8FED768FF20341679DD8A7FE8CC21CF4]' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+            <groupfilter function='member' level='[Weekdays]' member='&quot;Weekdays&quot;' user:ui-action-filter='[Action6_8FED768FF20341679DD8A7FE8CC21CF4]' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='categorical' column='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (Gender (group),Gender)]'>
+            <groupfilter function='crossjoin' user:ui-action-filter='[Action17_ABB44C37156B4BCABF6760F2D41B5B17]' user:ui-enumeration='all' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[Gender (group)]' />
+              <groupfilter function='level-members' level='[none:gender:ok]' />
+            </groupfilter>
           </filter>
           <filter class='categorical' column='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (MONTH(Startdate))]'>
             <groupfilter function='level-members' level='[mn:startdate:ok]' user:ui-action-filter='[Action2_1CD800D43CE84756B5E82789F7C44061]' user:ui-enumeration='all' user:ui-marker='enumerate' />
@@ -2087,6 +2841,8 @@
             <column>[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (Start Station Name)]</column>
             <column>[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (FilterWeekdayOrWeekend)]</column>
             <column>[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (Startday)]</column>
+            <column>[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (End Station Name)]</column>
+            <column>[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (Gender (group),Gender)]</column>
           </slices>
           <aggregation value='true' />
         </view>
@@ -2334,6 +3090,81 @@
         </devicelayout>
       </devicelayouts>
       <simple-id uuid='{8DDA39D4-8629-4871-8ED6-682D0A2BFE32}' />
+    </dashboard>
+    <dashboard name='Gender Bike Use'>
+      <style />
+      <size maxheight='800' maxwidth='1000' minheight='800' minwidth='1000' />
+      <zones>
+        <zone h='19875' id='3' name='Year' w='14700' x='83600' y='22750' />
+        <zone _.fcp.SetMembershipControl.false...type='text' _.fcp.SetMembershipControl.true...type-v2='text' forceUpdate='true' h='8375' id='20' w='82900' x='7700' y='1125'>
+          <formatted-text>
+            <run bold='true' fontalignment='1' fontname='Telugu MN' fontsize='36'>Citibike Popularity by Gender</run>
+          </formatted-text>
+        </zone>
+        <zone h='11500' id='35' name='Month' w='95800' x='1500' y='8625' />
+        <zone h='12125' id='42' name='Weekend or Weekday' w='15700' x='82700' y='52750' />
+        <zone h='42500' id='45' name='Busiest Hour (by Gender)' w='71900' x='400' y='58500' />
+        <zone h='32875' id='46' name='Gender' w='26500' x='73400' y='65625' />
+        <zone h='37875' id='47' name='Busiest Day (by Gender)' w='72000' x='700' y='21750' />
+        <zone h='9375' id='48' name='Total Bike Visitors' w='12500' x='86600' y='750' />
+      </zones>
+      <devicelayouts>
+        <devicelayout auto-generated='true' name='Phone'>
+          <size maxheight='1050' minheight='1050' sizing-mode='vscroll' />
+          <zones>
+            <zone _.fcp.SetMembershipControl.false...type='layout-basic' _.fcp.SetMembershipControl.true...type-v2='layout-basic' h='100000' id='44' w='100000' x='0' y='0'>
+              <zone _.fcp.SetMembershipControl.false...type='layout-flow' _.fcp.SetMembershipControl.true...type-v2='layout-flow' h='98000' id='43' param='vert' w='98400' x='800' y='1000'>
+                <zone _.fcp.SetMembershipControl.false...type='text' _.fcp.SetMembershipControl.true...type-v2='text' forceUpdate='true' h='8375' id='20' w='82900' x='7700' y='1125'>
+                  <formatted-text>
+                    <run bold='true' fontalignment='1' fontname='Telugu MN' fontsize='36'>Citibike Popularity by Gender</run>
+                  </formatted-text>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='92' h='11500' id='35' is-fixed='true' name='Month' w='95800' x='1500' y='8625'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='159' h='19875' id='3' is-fixed='true' name='Year' w='14700' x='84200' y='23750'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='97' h='12125' id='42' is-fixed='true' name='Weekend or Weekday' w='15700' x='84200' y='46375'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+              </zone>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='8' />
+              </zone-style>
+            </zone>
+          </zones>
+        </devicelayout>
+      </devicelayouts>
+      <simple-id uuid='{789D53D1-4FE8-4B9B-A75D-42F94C6159C5}' />
     </dashboard>
   </dashboards>
   <windows source-height='30'>
@@ -2613,7 +3444,35 @@
       </cards>
       <simple-id uuid='{D6F4E0F9-8BDD-49CC-B257-5953A7DAD53A}' />
     </window>
-    <window class='dashboard' maximized='true' name='Busiest Stations'>
+    <window class='worksheet' name='Busiest Day (by Gender)'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Gender (group)]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{02BF2FEB-5371-4465-B85B-235F43ECB4E7}' />
+    </window>
+    <window class='dashboard' name='Busiest Stations'>
       <viewpoints>
         <viewpoint name='MAP - Most Popular Station'>
           <zoom type='entire-view' />
@@ -2631,7 +3490,7 @@
           <zoom type='entire-view' />
         </viewpoint>
       </viewpoints>
-      <active id='-1' />
+      <active id='13' />
       <simple-id uuid='{6BB4CFA2-402E-452C-ADE5-F65DC8DD6E03}' />
     </window>
     <window class='dashboard' name='Busiest Day and Time'>
@@ -2657,6 +3516,33 @@
       </viewpoints>
       <active id='-1' />
       <simple-id uuid='{D7ACD99F-8235-40E0-82AE-857C8A6A69C4}' />
+    </window>
+    <window class='dashboard' maximized='true' name='Gender Bike Use'>
+      <viewpoints>
+        <viewpoint name='Busiest Day (by Gender)'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Busiest Hour (by Gender)'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Gender'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Month'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Total Bike Visitors'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Weekend or Weekday'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Year'>
+          <zoom type='entire-view' />
+        </viewpoint>
+      </viewpoints>
+      <active id='3' />
+      <simple-id uuid='{8B893625-D517-4A62-BAF9-BE5263A61574}' />
     </window>
     <window class='worksheet' name='Busiest Hour'>
       <cards>
@@ -2686,6 +3572,35 @@
       </cards>
       <simple-id uuid='{6491549C-717B-4E20-AC59-496BCFECEA3C}' />
     </window>
+    <window class='worksheet' name='Busiest Hour (by Gender)'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[usr:Calculation_5524157564909359105:qk]' type='size' />
+            <card pane-specification-id='0' param='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Gender (group)]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{DF86A99A-FC59-4EB3-BE1E-1CEF008F9218}' />
+    </window>
     <window class='worksheet' name='Weekend or Weekday'>
       <cards>
         <edge name='left'>
@@ -2708,6 +3623,57 @@
         </edge>
       </cards>
       <simple-id uuid='{EB163964-E0F4-4C51-9765-8815B68004D3}' />
+    </window>
+    <window class='worksheet' name='Gender'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Gender (group)]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{5DB05F24-D9A5-48CA-9E19-01C0A2620BCE}' />
+    </window>
+    <window class='worksheet' name='Total Bike Visitors'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{1E24ED9B-D911-4615-A7AD-0A4EF7BFDF58}' />
     </window>
   </windows>
 </workbook>
