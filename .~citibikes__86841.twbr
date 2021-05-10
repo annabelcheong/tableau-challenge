@@ -1806,8 +1806,8 @@
         </view>
         <style>
           <style-rule element='axis'>
-            <encoding attr='space' class='0' field='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[avg:start station longitude:qk]' field-type='quantitative' max='-8235843.2086595399' min='-8247569.7781666899' projection='EPSG:3857' range-type='fixed' scope='cols' type='space' />
-            <encoding attr='space' class='0' field='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[avg:start station latitude:qk]' field-type='quantitative' max='4972901.2125293165' min='4969525.8226807788' projection='EPSG:3857' range-type='fixed' scope='rows' type='space' />
+            <encoding attr='space' class='0' field='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[avg:start station longitude:qk]' field-type='quantitative' max='-8232665.114888655' min='-8252523.5687746406' projection='EPSG:3857' range-type='fixed' scope='cols' type='space' />
+            <encoding attr='space' class='0' field='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[avg:start station latitude:qk]' field-type='quantitative' max='4974646.6418658523' min='4968930.5606527114' projection='EPSG:3857' range-type='fixed' scope='rows' type='space' />
           </style-rule>
           <style-rule element='mark'>
             <encoding attr='color' field='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[avg:Calculation_6110892154058633217:qk]' palette='blue_teal_10_0' type='interpolated' />
@@ -1960,6 +1960,7 @@
             <mark-sizing mark-sizing-setting='marks-scaling-off' />
             <encodings>
               <color column='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[avg:Calculation_6110892154058633217:qk]' />
+              <size column='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[usr:Calculation_5524157564909359105:qk]' />
               <text column='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[none:start station name:nk]' />
               <text column='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[usr:Calculation_5524157564909359105:qk]' />
             </encodings>
@@ -1972,7 +1973,6 @@
                 <run bold='true'><![CDATA[<[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[avg:Calculation_6110892154058633217:qk]>]]></run>
                 <run>Æ&#10;</run>
                 <run fontcolor='#787878'>Number of Bike Visitors:&#9;</run>
-                <run bold='true'><![CDATA[<[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[usr:Calculation_5524157564909359105:qk]>]]></run>
               </formatted-text>
             </customized-tooltip>
             <style>
@@ -3285,7 +3285,12 @@
         </zone>
         <zone h='11500' id='35' name='Month' w='95800' x='1500' y='8625' />
         <zone h='34000' id='38' name='MAP - Most Popular Station' w='80700' x='1700' y='23250' />
-        <zone h='6250' id='41' name='Total Bike Visitors' w='11200' x='87900' y='1625' />
+        <zone h='6250' id='41' name='Total Bike Visitors' w='11200' x='87900' y='2125' />
+        <zone _.fcp.SetMembershipControl.false...type='text' _.fcp.SetMembershipControl.true...type-v2='text' h='3750' id='43' w='10900' x='88000' y='1500'>
+          <formatted-text>
+            <run fontname='Telugu MN'>Total Bike Visitors</run>
+          </formatted-text>
+        </zone>
       </zones>
       <devicelayouts>
         <devicelayout auto-generated='true' name='Phone'>
@@ -3453,6 +3458,46 @@
       </devicelayouts>
       <simple-id uuid='{789D53D1-4FE8-4B9B-A75D-42F94C6159C5}' />
     </dashboard>
+    <dashboard name='Story 1' type='storyboard'>
+      <style />
+      <size maxheight='964' maxwidth='1016' minheight='964' minwidth='1016' />
+      <zones>
+        <zone _.fcp.SetMembershipControl.false...type='layout-basic' _.fcp.SetMembershipControl.true...type-v2='layout-basic' h='100000' id='2' w='100000' x='0' y='0'>
+          <zone _.fcp.SetMembershipControl.false...type='layout-flow' _.fcp.SetMembershipControl.true...type-v2='layout-flow' h='98340' id='1' param='vert' removable='false' w='98426' x='787' y='830'>
+            <zone _.fcp.SetMembershipControl.false...type='title' _.fcp.SetMembershipControl.true...type-v2='title' h='3423' id='3' w='98426' x='787' y='830' />
+            <zone _.fcp.SetMembershipControl.false...type='flipboard-nav' _.fcp.SetMembershipControl.true...type-v2='flipboard-nav' h='10477' id='4' is-fixed='true' paired-zone-id='5' removable='false' w='98426' x='787' y='4253' />
+            <zone _.fcp.SetMembershipControl.false...type='flipboard' _.fcp.SetMembershipControl.true...type-v2='flipboard' h='84440' id='5' paired-zone-id='4' removable='false' w='98426' x='787' y='14730'>
+              <flipboard active-id='1' nav-type='caption' show-nav-arrows='true'>
+                <story-points>
+                  <story-point caption='Busiest Citibike Stations in New York.' captured-sheet='Busiest Stations' id='1'>
+                    <currentDeltas>
+                      <worksheet name='MAP - Most Popular Station'>
+                        <style delta-type='added'>
+                          <style-rule element='axis'>
+                            <encoding attr='space' class='0' field='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[avg:start station latitude:qk]' field-type='quantitative' max='4972577.0262541976' min='4969718.9856476281' projection='EPSG:3857' range-type='fixed' scope='rows' type='space' />
+                            <encoding attr='space' class='0' field='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[avg:start station longitude:qk]' field-type='quantitative' max='-8237075.3670544019' min='-8247004.5939973937' projection='EPSG:3857' range-type='fixed' scope='cols' type='space' />
+                          </style-rule>
+                        </style>
+                      </worksheet>
+                    </currentDeltas>
+                    <capturedDeltas />
+                  </story-point>
+                  <story-point caption='Busiest Citibike Days and Times.' captured-sheet='Busiest Day and Time' id='2' />
+                  <story-point caption='Citibike Popularity by Gender. ' captured-sheet='Gender Bike Use' id='3' />
+                </story-points>
+              </flipboard>
+            </zone>
+          </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='8' />
+          </zone-style>
+        </zone>
+      </zones>
+      <simple-id uuid='{73BB7B5B-9F24-4ABE-A63F-4337C30AEE70}' />
+    </dashboard>
   </dashboards>
   <windows source-height='72'>
     <window class='worksheet' name='Check index count'>
@@ -3501,6 +3546,7 @@
         <edge name='right'>
           <strip size='160'>
             <card pane-specification-id='0' param='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[avg:Calculation_6110892154058633217:qk]' type='color' />
+            <card pane-specification-id='0' param='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[usr:Calculation_5524157564909359105:qk]' type='size' />
           </strip>
         </edge>
       </cards>
@@ -3737,7 +3783,7 @@
       </cards>
       <simple-id uuid='{02BF2FEB-5371-4465-B85B-235F43ECB4E7}' />
     </window>
-    <window class='dashboard' maximized='true' name='Busiest Stations'>
+    <window class='dashboard' name='Busiest Stations'>
       <viewpoints>
         <viewpoint name='MAP - Most Popular Station'>
           <zoom type='entire-view' />
@@ -3759,7 +3805,7 @@
           <zoom type='entire-view' />
         </viewpoint>
       </viewpoints>
-      <active id='41' />
+      <active id='-1' />
       <simple-id uuid='{6BB4CFA2-402E-452C-ADE5-F65DC8DD6E03}' />
     </window>
     <window class='dashboard' name='Busiest Day and Time'>
@@ -3947,6 +3993,11 @@
         </edge>
       </cards>
       <simple-id uuid='{1E24ED9B-D911-4615-A7AD-0A4EF7BFDF58}' />
+    </window>
+    <window class='dashboard' maximized='true' name='Story 1'>
+      <viewpoints />
+      <active id='-1' />
+      <simple-id uuid='{FE0867FC-7F90-4C25-B281-251C4971F2AB}' />
     </window>
   </windows>
 </workbook>
