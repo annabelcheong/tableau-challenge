@@ -566,6 +566,180 @@
         </objects>
       </_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
     </datasource>
+    <datasource inline='true' name='Clipboard_20210510T081942' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='Clipboard_20210510T081942' name='Clipboard_20210510T081942leaf'>
+            <connection class='textscan' directory='/var/folders/6g/jzplv75166l34l8k2fr7v21m0000gn/T/tableau-temp/0kie65b1a4txj712blmtp0m67vt5' filename='Clipboard_20210510T081942.txt' temporary='yes' />
+          </named-connection>
+        </named-connections>
+        <_.fcp.ObjectModelEncapsulateLegacy.false...relation connection='Clipboard_20210510T081942leaf' name='Clipboard_20210510T081942#txt' table='[Clipboard_20210510T081942#txt]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='en_AU' separator=','>
+            <column datatype='integer' name='CountbyStation' ordinal='0' />
+            <column datatype='integer' name='F2' ordinal='1' />
+          </columns>
+        </_.fcp.ObjectModelEncapsulateLegacy.false...relation>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...relation connection='Clipboard_20210510T081942leaf' name='Clipboard_20210510T081942#txt' table='[Clipboard_20210510T081942#txt]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='en_AU' separator=','>
+            <column datatype='integer' name='CountbyStation' ordinal='0' />
+            <column datatype='integer' name='F2' ordinal='1' />
+          </columns>
+        </_.fcp.ObjectModelEncapsulateLegacy.true...relation>
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[Clipboard_20210510T081942#txt]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_GB&quot;</attribute>
+              <attribute datatype='string' name='debit-close-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='debit-open-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_AU&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>CountbyStation</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[CountbyStation]</local-name>
+            <parent-name>[Clipboard_20210510T081942#txt]</parent-name>
+            <remote-alias>CountbyStation</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Clipboard_20210510T081942]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>F2</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[F2]</local-name>
+            <parent-name>[Clipboard_20210510T081942#txt]</parent-name>
+            <remote-alias>F2</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Clipboard_20210510T081942]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='Countby Station' datatype='integer' name='[CountbyStation]' role='measure' type='quantitative' />
+      <_.fcp.ObjectModelTableType.true...column caption='Clipboard_20210510T081942' datatype='table' name='[__tableau_internal_object_id__].[Clipboard_20210510T081942]' role='measure' type='quantitative' />
+      <layout _.fcp.SchemaViewerObjectModel.false...dim-percentage='0.5' _.fcp.SchemaViewerObjectModel.false...measure-percentage='0.4' dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;Australia&quot;' />
+      </semantic-values>
+      <date-options start-of-week='monday' />
+      <_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+        <objects>
+          <object caption='Clipboard_20210510T081942' id='Clipboard_20210510T081942'>
+            <properties context=''>
+              <relation connection='Clipboard_20210510T081942leaf' name='Clipboard_20210510T081942#txt' table='[Clipboard_20210510T081942#txt]' type='table'>
+                <columns character-set='UTF-8' header='yes' locale='en_AU' separator=','>
+                  <column datatype='integer' name='CountbyStation' ordinal='0' />
+                  <column datatype='integer' name='F2' ordinal='1' />
+                </columns>
+              </relation>
+            </properties>
+          </object>
+        </objects>
+      </_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+    </datasource>
+    <datasource inline='true' name='Clipboard_20210510T082114' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='Clipboard_20210510T082114' name='Clipboard_20210510T082114leaf'>
+            <connection class='textscan' directory='/var/folders/6g/jzplv75166l34l8k2fr7v21m0000gn/T/tableau-temp/1sg4egc0e8r45q13wr0z11rap8ws' filename='Clipboard_20210510T082114.txt' temporary='yes' />
+          </named-connection>
+        </named-connections>
+        <_.fcp.ObjectModelEncapsulateLegacy.false...relation connection='Clipboard_20210510T082114leaf' name='Clipboard_20210510T082114#txt' table='[Clipboard_20210510T082114#txt]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='en_AU' separator=','>
+            <column datatype='integer' name='CountbyStation' ordinal='0' />
+            <column datatype='integer' name='F2' ordinal='1' />
+          </columns>
+        </_.fcp.ObjectModelEncapsulateLegacy.false...relation>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...relation connection='Clipboard_20210510T082114leaf' name='Clipboard_20210510T082114#txt' table='[Clipboard_20210510T082114#txt]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='en_AU' separator=','>
+            <column datatype='integer' name='CountbyStation' ordinal='0' />
+            <column datatype='integer' name='F2' ordinal='1' />
+          </columns>
+        </_.fcp.ObjectModelEncapsulateLegacy.true...relation>
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[Clipboard_20210510T082114#txt]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_GB&quot;</attribute>
+              <attribute datatype='string' name='debit-close-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='debit-open-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_AU&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>CountbyStation</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[CountbyStation]</local-name>
+            <parent-name>[Clipboard_20210510T082114#txt]</parent-name>
+            <remote-alias>CountbyStation</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Clipboard_20210510T082114]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>F2</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[F2]</local-name>
+            <parent-name>[Clipboard_20210510T082114#txt]</parent-name>
+            <remote-alias>F2</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Clipboard_20210510T082114]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='Countby Station' datatype='integer' name='[CountbyStation]' role='measure' type='quantitative' />
+      <_.fcp.ObjectModelTableType.true...column caption='Clipboard_20210510T082114' datatype='table' name='[__tableau_internal_object_id__].[Clipboard_20210510T082114]' role='measure' type='quantitative' />
+      <layout _.fcp.SchemaViewerObjectModel.false...dim-percentage='0.5' _.fcp.SchemaViewerObjectModel.false...measure-percentage='0.4' dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;Australia&quot;' />
+      </semantic-values>
+      <date-options start-of-week='monday' />
+      <_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+        <objects>
+          <object caption='Clipboard_20210510T082114' id='Clipboard_20210510T082114'>
+            <properties context=''>
+              <relation connection='Clipboard_20210510T082114leaf' name='Clipboard_20210510T082114#txt' table='[Clipboard_20210510T082114#txt]' type='table'>
+                <columns character-set='UTF-8' header='yes' locale='en_AU' separator=','>
+                  <column datatype='integer' name='CountbyStation' ordinal='0' />
+                  <column datatype='integer' name='F2' ordinal='1' />
+                </columns>
+              </relation>
+            </properties>
+          </object>
+        </objects>
+      </_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+    </datasource>
   </datasources>
   <mapsources>
     <mapsource name='Tableau' />
@@ -614,6 +788,14 @@
     <action caption='Filter 9 (generated)' name='[Action16_66080CA6BAE44DBA9160AE81C5F09250]'>
       <activation auto-clear='true' type='on-select' />
       <source dashboard='Gender Bike Use' type='sheet' worksheet='Gender' />
+      <command command='tsc:tsl-filter'>
+        <param name='special-fields' value='all' />
+        <param name='target' value='Gender Bike Use' />
+      </command>
+    </action>
+    <action caption='Filter 11 (generated)' name='[Action16_9BD91DB5F0FB41188ABEBAB090A8227A]'>
+      <activation auto-clear='true' type='on-select' />
+      <source dashboard='Gender Bike Use' type='sheet' worksheet='Total Bike Visitors' />
       <command command='tsc:tsl-filter'>
         <param name='special-fields' value='all' />
         <param name='target' value='Gender Bike Use' />
@@ -895,7 +1077,7 @@
             <column-instance column='[startdate]' derivation='Year' name='[yr:startdate:ok]' pivot='key' type='ordinal' />
           </datasource-dependencies>
           <filter class='categorical' column='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (FilterWeekdayOrWeekend)]'>
-            <groupfilter function='member' level='[Weekdays]' member='&quot;Weekends&quot;' user:ui-action-filter='[Action6_8FED768FF20341679DD8A7FE8CC21CF4]' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+            <groupfilter function='level-members' level='[Weekdays]' user:ui-action-filter='[Action6_8FED768FF20341679DD8A7FE8CC21CF4]' user:ui-enumeration='all' user:ui-marker='enumerate' />
           </filter>
           <filter class='categorical' column='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (Gender (group),Gender)]'>
             <groupfilter function='crossjoin' user:ui-action-filter='[Action17_ABB44C37156B4BCABF6760F2D41B5B17]' user:ui-enumeration='all' user:ui-marker='enumerate'>
@@ -904,7 +1086,7 @@
             </groupfilter>
           </filter>
           <filter class='categorical' column='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (MONTH(Startdate))]'>
-            <groupfilter function='member' level='[mn:startdate:ok]' member='2' user:ui-action-filter='[Action4_9AED36F9A5634BCDA2D44429555DD0BF]' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+            <groupfilter function='level-members' level='[mn:startdate:ok]' user:ui-action-filter='[Action4_9AED36F9A5634BCDA2D44429555DD0BF]' user:ui-enumeration='all' user:ui-marker='enumerate' />
           </filter>
           <filter class='categorical' column='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (Start Station Name)]'>
             <groupfilter function='level-members' level='[start station name]' user:ui-action-filter='[Action6_2329E35C99694A10B4BE6B26686AFBFE]' user:ui-enumeration='all' user:ui-marker='enumerate' />
@@ -1214,7 +1396,7 @@
             <column-instance column='[startdate]' derivation='Year' name='[yr:startdate:ok]' pivot='key' type='ordinal' />
           </datasource-dependencies>
           <filter class='categorical' column='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (FilterWeekdayOrWeekend)]'>
-            <groupfilter function='member' level='[Weekdays]' member='&quot;Weekends&quot;' user:ui-action-filter='[Action6_8FED768FF20341679DD8A7FE8CC21CF4]' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+            <groupfilter function='level-members' level='[Weekdays]' user:ui-action-filter='[Action6_8FED768FF20341679DD8A7FE8CC21CF4]' user:ui-enumeration='all' user:ui-marker='enumerate' />
           </filter>
           <filter class='categorical' column='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (Gender (group),Gender)]'>
             <groupfilter function='crossjoin' user:ui-action-filter='[Action17_ABB44C37156B4BCABF6760F2D41B5B17]' user:ui-enumeration='all' user:ui-marker='enumerate'>
@@ -1229,7 +1411,7 @@
             </groupfilter>
           </filter>
           <filter class='categorical' column='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (MONTH(Startdate))]'>
-            <groupfilter function='member' level='[mn:startdate:ok]' member='2' user:ui-action-filter='[Action4_9AED36F9A5634BCDA2D44429555DD0BF]' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+            <groupfilter function='level-members' level='[mn:startdate:ok]' user:ui-action-filter='[Action4_9AED36F9A5634BCDA2D44429555DD0BF]' user:ui-enumeration='all' user:ui-marker='enumerate' />
           </filter>
           <filter class='categorical' column='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (Start Station Name)]'>
             <groupfilter function='level-members' level='[start station name]' user:ui-action-filter='[Action6_2329E35C99694A10B4BE6B26686AFBFE]' user:ui-enumeration='all' user:ui-marker='enumerate' />
@@ -1438,7 +1620,7 @@
             <column-instance column='[startdate]' derivation='Year' name='[yr:startdate:ok]' pivot='key' type='ordinal' />
           </datasource-dependencies>
           <filter class='categorical' column='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (FilterWeekdayOrWeekend)]'>
-            <groupfilter function='member' level='[Weekdays]' member='&quot;Weekends&quot;' user:ui-action-filter='[Action15_C22910A1171842D38F0BCC423F17434F]' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+            <groupfilter function='level-members' level='[Weekdays]' user:ui-action-filter='[Action15_C22910A1171842D38F0BCC423F17434F]' user:ui-enumeration='all' user:ui-marker='enumerate' />
           </filter>
           <filter class='categorical' column='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (Gender (group),Startday)]'>
             <groupfilter function='crossjoin' user:ui-action-filter='[Action15_0E13AE1788D444E5B6BDD44BCBC34BA4]' user:ui-enumeration='all' user:ui-marker='enumerate'>
@@ -1447,7 +1629,7 @@
             </groupfilter>
           </filter>
           <filter class='categorical' column='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (MONTH(Startdate))]'>
-            <groupfilter function='member' level='[mn:startdate:ok]' member='2' user:ui-action-filter='[Action13_64415C84561A45C682BF25362476A177]' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+            <groupfilter function='level-members' level='[mn:startdate:ok]' user:ui-action-filter='[Action13_64415C84561A45C682BF25362476A177]' user:ui-enumeration='all' user:ui-marker='enumerate' />
           </filter>
           <filter class='categorical' column='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (YEAR(Startdate))]'>
             <groupfilter function='level-members' level='[yr:startdate:ok]' user:ui-action-filter='[Action12_E91B5B5F2A9146E48C193E48DDF001B7]' user:ui-enumeration='all' user:ui-marker='enumerate' />
@@ -1626,6 +1808,9 @@
           <style-rule element='axis'>
             <encoding attr='space' class='0' field='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[avg:start station longitude:qk]' field-type='quantitative' max='-8235843.2086595399' min='-8247569.7781666899' projection='EPSG:3857' range-type='fixed' scope='cols' type='space' />
             <encoding attr='space' class='0' field='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[avg:start station latitude:qk]' field-type='quantitative' max='4972901.2125293165' min='4969525.8226807788' projection='EPSG:3857' range-type='fixed' scope='rows' type='space' />
+          </style-rule>
+          <style-rule element='mark'>
+            <encoding attr='color' field='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[avg:Calculation_6110892154058633217:qk]' palette='blue_teal_10_0' type='interpolated' />
           </style-rule>
           <style-rule element='map-layer'>
             <format attr='enabled' id='tunnel-service-link-track-case' value='true' />
@@ -2343,7 +2528,7 @@
             <groupfilter function='level-members' level='[end station name]' user:ui-action-filter='[Action10_64A6132FE92C4FD0ADA3EA31F3C12B6E]' user:ui-enumeration='all' user:ui-marker='enumerate' />
           </filter>
           <filter class='categorical' column='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (FilterWeekdayOrWeekend)]'>
-            <groupfilter function='member' level='[Weekdays]' member='&quot;Weekends&quot;' user:ui-action-filter='[Action6_8FED768FF20341679DD8A7FE8CC21CF4]' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+            <groupfilter function='level-members' level='[Weekdays]' user:ui-action-filter='[Action6_8FED768FF20341679DD8A7FE8CC21CF4]' user:ui-enumeration='all' user:ui-marker='enumerate' />
           </filter>
           <filter class='categorical' column='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (Gender (group),Gender)]'>
             <groupfilter function='crossjoin' user:ui-action-filter='[Action17_ABB44C37156B4BCABF6760F2D41B5B17]' user:ui-enumeration='all' user:ui-marker='enumerate'>
@@ -2620,9 +2805,7 @@
     <worksheet name='Total Bike Visitors'>
       <layout-options>
         <title>
-          <formatted-text>
-            <run fontalignment='2' fontname='Telugu MN' fontsize='10'>&lt;Sheet Name&gt;</run>
-          </formatted-text>
+          <formatted-text />
         </title>
       </layout-options>
       <table>
@@ -2673,7 +2856,7 @@
             <column-instance column='[startdate]' derivation='Year' name='[yr:startdate:ok]' pivot='key' type='ordinal' />
           </datasource-dependencies>
           <filter class='categorical' column='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (FilterWeekdayOrWeekend)]'>
-            <groupfilter function='member' level='[Weekdays]' member='&quot;Weekends&quot;' user:ui-action-filter='[Action15_C22910A1171842D38F0BCC423F17434F]' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+            <groupfilter function='level-members' level='[Weekdays]' user:ui-action-filter='[Action15_C22910A1171842D38F0BCC423F17434F]' user:ui-enumeration='all' user:ui-marker='enumerate' />
           </filter>
           <filter class='categorical' column='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (Gender (group),Gender)]'>
             <groupfilter function='crossjoin' user:ui-action-filter='[Action16_66080CA6BAE44DBA9160AE81C5F09250]' user:ui-enumeration='all' user:ui-marker='enumerate'>
@@ -2688,7 +2871,7 @@
             </groupfilter>
           </filter>
           <filter class='categorical' column='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (MONTH(Startdate))]'>
-            <groupfilter function='member' level='[mn:startdate:ok]' member='2' user:ui-action-filter='[Action13_64415C84561A45C682BF25362476A177]' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+            <groupfilter function='level-members' level='[mn:startdate:ok]' user:ui-action-filter='[Action13_64415C84561A45C682BF25362476A177]' user:ui-enumeration='all' user:ui-marker='enumerate' />
           </filter>
           <filter class='categorical' column='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (YEAR(Startdate))]'>
             <groupfilter function='level-members' level='[yr:startdate:ok]' user:ui-action-filter='[Action12_E91B5B5F2A9146E48C193E48DDF001B7]' user:ui-enumeration='all' user:ui-marker='enumerate' />
@@ -2702,7 +2885,11 @@
           </slices>
           <aggregation value='true' />
         </view>
-        <style />
+        <style>
+          <style-rule element='cell'>
+            <format attr='color' value='#666666' />
+          </style-rule>
+        </style>
         <panes>
           <pane selection-relaxation-option='selection-relaxation-allow'>
             <view>
@@ -2720,6 +2907,9 @@
               </formatted-text>
             </customized-label>
             <style>
+              <style-rule element='cell'>
+                <format attr='text-align' value='center' />
+              </style-rule>
               <style-rule element='mark'>
                 <format attr='mark-labels-show' value='true' />
                 <format attr='mark-labels-cull' value='true' />
@@ -2793,7 +2983,7 @@
             </groupfilter>
           </filter>
           <filter class='categorical' column='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (MONTH(Startdate))]'>
-            <groupfilter function='member' level='[mn:startdate:ok]' member='2' user:ui-action-filter='[Action4_9AED36F9A5634BCDA2D44429555DD0BF]' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+            <groupfilter function='level-members' level='[mn:startdate:ok]' user:ui-action-filter='[Action4_9AED36F9A5634BCDA2D44429555DD0BF]' user:ui-enumeration='all' user:ui-marker='enumerate' />
           </filter>
           <filter class='categorical' column='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (Start Station Name)]'>
             <groupfilter function='level-members' level='[start station name]' user:ui-action-filter='[Action6_2329E35C99694A10B4BE6B26686AFBFE]' user:ui-enumeration='all' user:ui-marker='enumerate' />
@@ -2897,7 +3087,7 @@
             <groupfilter function='level-members' level='[end station name]' user:ui-action-filter='[Action10_64A6132FE92C4FD0ADA3EA31F3C12B6E]' user:ui-enumeration='all' user:ui-marker='enumerate' />
           </filter>
           <filter class='categorical' column='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (FilterWeekdayOrWeekend)]'>
-            <groupfilter function='member' level='[Weekdays]' member='&quot;Weekends&quot;' user:ui-action-filter='[Action6_8FED768FF20341679DD8A7FE8CC21CF4]' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+            <groupfilter function='level-members' level='[Weekdays]' user:ui-action-filter='[Action6_8FED768FF20341679DD8A7FE8CC21CF4]' user:ui-enumeration='all' user:ui-marker='enumerate' />
           </filter>
           <filter class='categorical' column='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (Gender (group),Gender)]'>
             <groupfilter function='crossjoin' user:ui-action-filter='[Action17_ABB44C37156B4BCABF6760F2D41B5B17]' user:ui-enumeration='all' user:ui-marker='enumerate'>
@@ -2912,7 +3102,7 @@
             </groupfilter>
           </filter>
           <filter class='categorical' column='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (MONTH(Startdate))]'>
-            <groupfilter function='member' level='[mn:startdate:ok]' member='2' user:ui-action-filter='[Action2_1CD800D43CE84756B5E82789F7C44061]' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+            <groupfilter function='level-members' level='[mn:startdate:ok]' user:ui-action-filter='[Action2_1CD800D43CE84756B5E82789F7C44061]' user:ui-enumeration='all' user:ui-marker='enumerate' />
           </filter>
           <filter class='categorical' column='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (Start Station Name)]'>
             <groupfilter function='level-members' level='[start station name]' user:ui-action-filter='[Action6_394C889E1F724C1C9B19A011DCFE6FF2]' user:ui-enumeration='all' user:ui-marker='enumerate' />
@@ -2994,7 +3184,13 @@
         <zone h='37750' id='41' name='Busiest Day' w='80900' x='1200' y='22125' />
         <zone h='12125' id='42' name='Weekend or Weekday' w='15700' x='83600' y='42375' />
         <zone h='41375' id='45' name='Busiest Hour' w='70600' x='1900' y='59000' />
-        <zone _.fcp.SetMembershipControl.false...type='color' _.fcp.SetMembershipControl.true...type-v2='color' h='6500' id='46' name='MAP - Most Popular Station' pane-specification-id='0' param='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[avg:tripduration:qk]' w='15800' x='83600' y='55750' />
+        <zone _.fcp.SetMembershipControl.false...type='color' _.fcp.SetMembershipControl.true...type-v2='color' h='6500' id='46' name='MAP - Most Popular Station' pane-specification-id='0' param='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[avg:Calculation_6110892154058633217:qk]' w='15800' x='83600' y='55750' />
+        <zone h='5750' id='47' name='Total Bike Visitors' w='12600' x='86600' y='2250' />
+        <zone _.fcp.SetMembershipControl.false...type='text' _.fcp.SetMembershipControl.true...type-v2='text' h='3750' id='48' w='10900' x='87400' y='1000'>
+          <formatted-text>
+            <run>Total Bike Visitors</run>
+          </formatted-text>
+        </zone>
       </zones>
       <devicelayouts>
         <devicelayout auto-generated='true' name='Phone'>
@@ -3082,13 +3278,14 @@
         </zone>
         <zone _.fcp.SetMembershipControl.false...type='color' _.fcp.SetMembershipControl.true...type-v2='color' h='9750' id='12' name='Most Popular Station (Finish Point)' pane-specification-id='0' param='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[avg:Calculation_6110892154058633217:qk]' w='14900' x='84000' y='49125' />
         <zone h='40625' id='13' name='Most Popular Station (Starting Point)' w='48500' x='1600' y='58750' />
-        <zone _.fcp.SetMembershipControl.false...type='text' _.fcp.SetMembershipControl.true...type-v2='text' forceUpdate='true' h='8375' id='20' w='82900' x='7700' y='1125'>
+        <zone _.fcp.SetMembershipControl.false...type='text' _.fcp.SetMembershipControl.true...type-v2='text' forceUpdate='true' h='8375' id='20' w='82900' x='3600' y='1125'>
           <formatted-text>
             <run bold='true' fontalignment='1' fontname='Telugu MN' fontsize='36'>Busiest Stations: When and Where?</run>
           </formatted-text>
         </zone>
         <zone h='11500' id='35' name='Month' w='95800' x='1500' y='8625' />
         <zone h='34000' id='38' name='MAP - Most Popular Station' w='80700' x='1700' y='23250' />
+        <zone h='6250' id='41' name='Total Bike Visitors' w='11200' x='87900' y='1625' />
       </zones>
       <devicelayouts>
         <devicelayout auto-generated='true' name='Phone'>
@@ -3154,7 +3351,7 @@
                     <format attr='padding' value='0' />
                   </zone-style>
                 </zone>
-                <zone _.fcp.SetMembershipControl.false...type='color' _.fcp.SetMembershipControl.true...type-v2='color' h='9750' id='12' name='Most Popular Station (Finish Point)' pane-specification-id='0' param='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[avg:tripduration:qk]' w='14900' x='84000' y='49125'>
+                <zone _.fcp.SetMembershipControl.false...type='color' _.fcp.SetMembershipControl.true...type-v2='color' h='9750' id='42' name='Most Popular Station (Finish Point)' pane-specification-id='0' param='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[avg:tripduration:qk]' w='14900' x='84000' y='49125'>
                   <zone-style>
                     <format attr='border-color' value='#000000' />
                     <format attr='border-style' value='none' />
@@ -3180,8 +3377,8 @@
       <style />
       <size maxheight='800' maxwidth='1000' minheight='800' minwidth='1000' />
       <zones>
-        <zone h='19875' id='3' name='Year' w='14700' x='83600' y='22750' />
-        <zone _.fcp.SetMembershipControl.false...type='text' _.fcp.SetMembershipControl.true...type-v2='text' forceUpdate='true' h='8375' id='20' w='82900' x='7700' y='1125'>
+        <zone h='19875' id='3' name='Year' w='14700' x='84600' y='22750' />
+        <zone _.fcp.SetMembershipControl.false...type='text' _.fcp.SetMembershipControl.true...type-v2='text' forceUpdate='true' h='8375' id='20' w='75500' x='7700' y='1125'>
           <formatted-text>
             <run bold='true' fontalignment='1' fontname='Telugu MN' fontsize='36'>Citibike Popularity by Gender</run>
           </formatted-text>
@@ -3191,7 +3388,12 @@
         <zone h='42500' id='45' name='Busiest Hour (by Gender)' w='71900' x='400' y='58500' />
         <zone h='35875' id='46' name='Gender' w='25700' x='73600' y='63500' />
         <zone h='37875' id='47' name='Busiest Day (by Gender)' w='72000' x='700' y='21750' />
-        <zone h='9375' id='48' name='Total Bike Visitors' w='12500' x='86600' y='750' />
+        <zone h='6500' id='48' name='Total Bike Visitors' w='11800' x='87500' y='2375' />
+        <zone _.fcp.SetMembershipControl.false...type='text' _.fcp.SetMembershipControl.true...type-v2='text' forceUpdate='true' h='3750' id='49' w='10900' x='88000' y='1250'>
+          <formatted-text>
+            <run fontname='Telugu MN'>Total Bike Visitors</run>
+          </formatted-text>
+        </zone>
       </zones>
       <devicelayouts>
         <devicelayout auto-generated='true' name='Phone'>
@@ -3252,7 +3454,7 @@
       <simple-id uuid='{789D53D1-4FE8-4B9B-A75D-42F94C6159C5}' />
     </dashboard>
   </dashboards>
-  <windows source-height='30'>
+  <windows source-height='72'>
     <window class='worksheet' name='Check index count'>
       <cards>
         <edge name='left'>
@@ -3276,7 +3478,7 @@
       </cards>
       <simple-id uuid='{86004F67-7CCE-4829-8C72-883F44535474}' />
     </window>
-    <window class='worksheet' maximized='true' name='MAP - Most Popular Station'>
+    <window class='worksheet' name='MAP - Most Popular Station'>
       <cards>
         <edge name='left'>
           <strip size='160'>
@@ -3535,7 +3737,7 @@
       </cards>
       <simple-id uuid='{02BF2FEB-5371-4465-B85B-235F43ECB4E7}' />
     </window>
-    <window class='dashboard' name='Busiest Stations'>
+    <window class='dashboard' maximized='true' name='Busiest Stations'>
       <viewpoints>
         <viewpoint name='MAP - Most Popular Station'>
           <zoom type='entire-view' />
@@ -3550,11 +3752,14 @@
         <viewpoint name='Most Popular Station (Starting Point)'>
           <zoom type='entire-view' />
         </viewpoint>
+        <viewpoint name='Total Bike Visitors'>
+          <zoom type='entire-view' />
+        </viewpoint>
         <viewpoint name='Year'>
           <zoom type='entire-view' />
         </viewpoint>
       </viewpoints>
-      <active id='-1' />
+      <active id='41' />
       <simple-id uuid='{6BB4CFA2-402E-452C-ADE5-F65DC8DD6E03}' />
     </window>
     <window class='dashboard' name='Busiest Day and Time'>
@@ -3569,6 +3774,9 @@
           <zoom type='entire-view' />
         </viewpoint>
         <viewpoint name='Month'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Total Bike Visitors'>
           <zoom type='entire-view' />
         </viewpoint>
         <viewpoint name='Weekend or Weekday'>
@@ -3597,6 +3805,7 @@
         </viewpoint>
         <viewpoint name='Total Bike Visitors'>
           <zoom type='entire-view' />
+          <floating-toolbar-visibility value='1' />
         </viewpoint>
         <viewpoint name='Weekend or Weekday'>
           <zoom type='entire-view' />
@@ -3605,7 +3814,7 @@
           <zoom type='entire-view' />
         </viewpoint>
       </viewpoints>
-      <active id='46' />
+      <active id='49' />
       <simple-id uuid='{8B893625-D517-4A62-BAF9-BE5263A61574}' />
     </window>
     <window class='worksheet' name='Busiest Hour'>
