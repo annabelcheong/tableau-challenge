@@ -47,14 +47,17 @@ Take Grove St PATH for example, which has an average trip duration of 7.7 minute
 The trip duration has doubled from 2019 to 2020. (This trend is also common amongst other stations.)
 
 ### Busiest Day and Time
+This dashboard clearly shows the days of the week vs number of bike visitors as well as the hours in a day vs number of bike visitors. 
 
+#### Unexpected Findings: Phenomena is that there are evidently 'quiet Mondays' on the bikes, peak hour at 10pm in 2021, a shift towards 'popular Saturdays' on bikes from 2019 to 2020 and 2021.
+As a wild guess, before any analysis has taken place, I would assume that weekdays would yield the highest number of bike visitors across all stations compared to weekends. 
 
+This trend is true for 2019 With weekdays varying from 118,986 to 129,714 visitors each day and weekends dropping from 84,374 to 99,590 visitors. 
+However, in 2020, weekends were more popular; weekdays vary from 85,396 to 92573 visitors and weekends at 104,372 to 114,122 visitors. 
 
+Furthermore, year after year, Mondays seem to always be the quietest weekday on bikes. In 2019, Tuesday was the busiest weekday at 129,714 visitors and Monday, the quietest weekday at 118,986 visitors. Tuesday and Wednesdays tend to always be the busiest weekdays for Citibike goers. 
 
-
-#### Unexpected Findings
-
-
+In 2019 and 2020, the number of bike visitors have noticeable peaks at 8am and 6pm. However, in 2021, peak hour is 10pm at night, with a gradual trend increase from 5am in the morning. 
 
 ### Citibike Popularity by Gender
 
@@ -76,3 +79,10 @@ The trip duration has doubled from 2019 to 2020. (This trend is also common amon
 ### FILE: citibikes.twb
 - Contains the Tableau file which extracts the 1 csv file (as produced from the citibikes.ipynb file), and displays the multiple sheets, dashboards and story.
 * Also available on Tableau online: https://prod-apsoutheast-a.online.tableau.com/#/site/newyorkcitibikeswithannabel/workbooks/44890?:origin=card_share_link
+
+
+
+
+
+
+
