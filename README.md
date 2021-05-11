@@ -60,9 +60,9 @@ Furthermore, year after year, Mondays seem to always be the quietest weekday on 
 In 2019 and 2020, the number of bike visitors have noticeable peaks at 8am and 6pm. However, in 2021, peak hour is 10pm at night, with a gradual trend increase from 5am in the morning. 
 
 ### Citibike Popularity by Gender
+The dashboard illustrates the proportion of bike riders by gender. Additionally, the number of female and male riders on each day of the week as well as by the hour on a 24 hour cycle. 
 
-
-#### Unexpected Findings
+#### Unexpected Findings: Phenomena is that Citibikes are most popular on weekdays for males and weekends for females.
 
 
 
