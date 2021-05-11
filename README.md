@@ -63,7 +63,7 @@ In 2019 and 2020, the number of bike visitors have noticeable peaks at 8am and 6
 ### Citibike Popularity by Gender
 The dashboard illustrates the proportion of bike riders by gender. Additionally, the number of female and male riders on each day of the week as well as by the hour on a 24 hour cycle. 
 
-#### Unexpected Findings: Phenomena is that significantly more males are using Citibikes than females
+#### Unexpected Finding: Phenomena is that significantly more males are using Citibikes than females.
 There are about 3 times more males than female using Citibikes. Overall (all data taken into account), there are 994,058 males, 361,004 females and 241,456 unknowns. This trend is also evident across each individual years; 2019, 2020 and 2021. Unfortunately, more and more proportion of people over the years have chosen to be classified 'unknown' as opposed to revealing their true gender for the analysis. This could potentially skew the data and disprove the theory that more males than females are on the bikes (especially in 2021 where there were significantly more 'unknown' than each of the genders). 
 
 The busiest hour for male and female are both at 5-6pm which is expected (end of a work day when people are commuting from offices). However, the 'unknown' category's peak hour is at 10pm. The proportion of unknowns is so much larger than the male and female category that it has placed the overall 2021 peak hour at 10pm (as also summarised in the previous dashboard). 
