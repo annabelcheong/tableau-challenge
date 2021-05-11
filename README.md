@@ -50,7 +50,7 @@ The trip duration has doubled from 2019 to 2020. (This trend is also common amon
 ### Busiest Day and Time
 This dashboard clearly shows the days of the week vs number of bike visitors as well as the hours in a day vs number of bike visitors. 
 
-#### Unexpected Findings: Phenomena is that there are evidently 'quiet Mondays' on the bikes, peak hour at 10pm in 2021, a shift towards 'popular Saturdays' on bikes from 2019 to 2020 and 2021.
+#### Unexpected Findings: Phenomena is that there are evidently 'quiet Mondays' on the bikes, peak hour at 10pm in 2021, a shift towards 'popular Saturdays' on bikes in 2020 and 2021.
 As a wild guess, before any analysis has taken place, I would assume that weekdays would yield the highest number of bike visitors across all stations compared to weekends. 
 
 This trend is true for 2019 With weekdays varying from 118,986 to 129,714 visitors each day and weekends dropping from 84,374 to 99,590 visitors. 
