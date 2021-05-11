@@ -950,7 +950,7 @@
             <groupfilter function='level-members' level='[start station name]' user:ui-action-filter='[Action6_2329E35C99694A10B4BE6B26686AFBFE]' user:ui-enumeration='all' user:ui-marker='enumerate' />
           </filter>
           <filter class='categorical' column='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (YEAR(Startdate))]'>
-            <groupfilter function='level-members' level='[yr:startdate:ok]' user:ui-action-filter='[Action3_BA71957B801B4DBAAFDF16721FF49CCF]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+            <groupfilter function='member' level='[yr:startdate:ok]' member='2021' user:ui-action-filter='[Action3_BA71957B801B4DBAAFDF16721FF49CCF]' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
           </filter>
           <shelf-sorts>
             <shelf-sort-v2 dimension-to-sort='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[none:startday:nk]' direction='DESC' is-on-innermost-dimension='true' measure-to-sort-by='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[usr:Calculation_5524157564909359105:qk]' shelf='columns' />
@@ -1292,7 +1292,7 @@
             <groupfilter function='level-members' level='[startday]' user:ui-action-filter='[Action8_BF931A95105042B4A51704D4B568E55A]' user:ui-enumeration='all' user:ui-marker='enumerate' />
           </filter>
           <filter class='categorical' column='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (YEAR(Startdate))]'>
-            <groupfilter function='level-members' level='[yr:startdate:ok]' user:ui-action-filter='[Action3_BA71957B801B4DBAAFDF16721FF49CCF]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+            <groupfilter function='member' level='[yr:startdate:ok]' member='2021' user:ui-action-filter='[Action3_BA71957B801B4DBAAFDF16721FF49CCF]' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
           </filter>
           <filter class='categorical' column='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[hr:starttime:ok]'>
             <groupfilter from='0' function='range' level='[hr:starttime:ok]' to='23' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
@@ -1504,7 +1504,7 @@
             <groupfilter function='level-members' level='[mn:startdate:ok]' user:ui-action-filter='[Action13_64415C84561A45C682BF25362476A177]' user:ui-enumeration='all' user:ui-marker='enumerate' />
           </filter>
           <filter class='categorical' column='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (YEAR(Startdate))]'>
-            <groupfilter function='level-members' level='[yr:startdate:ok]' user:ui-action-filter='[Action12_E91B5B5F2A9146E48C193E48DDF001B7]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+            <groupfilter function='member' level='[yr:startdate:ok]' member='2021' user:ui-action-filter='[Action12_E91B5B5F2A9146E48C193E48DDF001B7]' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
           </filter>
           <slices>
             <column>[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (YEAR(Startdate))]</column>
@@ -1958,7 +1958,7 @@
             <groupfilter function='level-members' level='[startday]' user:ui-action-filter='[Action8_BF931A95105042B4A51704D4B568E55A]' user:ui-enumeration='all' user:ui-marker='enumerate' />
           </filter>
           <filter class='categorical' column='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (YEAR(Startdate))]'>
-            <groupfilter function='member' level='[yr:startdate:ok]' member='2019' user:ui-action-filter='[Action1_CA3F87D73ABF41888658897E60F0CD79]' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+            <groupfilter function='member' level='[yr:startdate:ok]' member='2021' user:ui-action-filter='[Action1_CA3F87D73ABF41888658897E60F0CD79]' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
           </filter>
           <slices>
             <column>[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (YEAR(Startdate))]</column>
@@ -2307,7 +2307,7 @@
             <groupfilter function='level-members' level='[startday]' user:ui-action-filter='[Action8_BF931A95105042B4A51704D4B568E55A]' user:ui-enumeration='all' user:ui-marker='enumerate' />
           </filter>
           <filter class='categorical' column='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (YEAR(Startdate))]'>
-            <groupfilter function='member' level='[yr:startdate:ok]' member='2019' user:ui-action-filter='[Action12_E91B5B5F2A9146E48C193E48DDF001B7]' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+            <groupfilter function='member' level='[yr:startdate:ok]' member='2021' user:ui-action-filter='[Action12_E91B5B5F2A9146E48C193E48DDF001B7]' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
           </filter>
           <slices>
             <column>[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (YEAR(Startdate))]</column>
@@ -2434,7 +2434,7 @@
             <groupfilter function='level-members' level='[startday]' user:ui-action-filter='[Action8_BF931A95105042B4A51704D4B568E55A]' user:ui-enumeration='all' user:ui-marker='enumerate' />
           </filter>
           <filter class='categorical' column='[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (YEAR(Startdate))]'>
-            <groupfilter function='member' level='[yr:startdate:ok]' member='2019' user:ui-action-filter='[Action3_BA71957B801B4DBAAFDF16721FF49CCF]' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+            <groupfilter function='member' level='[yr:startdate:ok]' member='2021' user:ui-action-filter='[Action3_BA71957B801B4DBAAFDF16721FF49CCF]' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
           </filter>
           <slices>
             <column>[federated.1kx1r620vvdyrn1ayrezz1oo11ir].[Action (YEAR(Startdate))]</column>
@@ -3478,7 +3478,7 @@
           <zoom type='entire-view' />
         </viewpoint>
       </viewpoints>
-      <active id='46' />
+      <active id='-1' />
       <simple-id uuid='{8B893625-D517-4A62-BAF9-BE5263A61574}' />
     </window>
     <window class='dashboard' name='Citibike Trends'>
