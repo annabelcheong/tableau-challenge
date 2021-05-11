@@ -10,14 +10,14 @@ There are 3 dashboards created in the analysis:
 - Citibike Popularity by Gender
 
 On each dashboard, there are common filters for user interaction. These are the year and the months of the year. 
-For example, the user may click on 2020 and June. The graphs and total bike visitors card value would update to reflect that specirfic month and year's data.
+For example, the user may click on 2020 and June. The graphs and total bike visitors card value would update to reflect that specific month and year's data.
 
-On the two dashboards; Busiest Day and Time and Citibike Popularity by Gender, users are able to alser filter the data further by click on either Weekdays or Weekend to find trends of interest. Alternatively, the user is able to click on a particular day of the week to return only results of that day for graphs and results over the entire dashboard.
+On the two dashboards; Busiest Day and Time and Citibike Popularity by Gender, users are able to also filter the data further by clicking on either Weekdays or Weekend to find trends of interest. Alternatively, the user is able to click on a particular day of the week to return only results of that day for visualisation results over the entire dashboard.
 
 On the one dashboard Citibike Popularty by Gender, users are able to filter for the specific gender to view the number of female or male tagging on/off at stations, as well the popularity use of the bikes by time (year, month, weekdays, weekends, hourly).
 
 ### Busiest Stations: When and Where?
-This dashboard incorporates a map visualisation whereby each bubble represents a Citibike station. The size of the bubble indicates the number of bike visitors such that the greater the number of visitors, the bigger the bubble. The colour of the shaded bubbles indicate the average trip duration from the station.
+This dashboard incorporates a map visualisation whereby each bubble represents a Citibike station. The size of the bubble indicates the number of bike visitors such that the greater the number of visitors, the bigger the bubble. The colour intensity of the shaded bubbles indicate the average trip duration from the station.
 
 The 3 most popular stations (using full dataset) are as per order:
 - Grove St PATH (146, 434 visits)
@@ -35,10 +35,11 @@ In 2020, the 3 most popular stations are as per order:
 - Liberty Light Rail (33,866 visits)
 
 Grove St PATH is easily always the most popular station without competition, with a significant gap of visitors before the 2nd most popular station, year after year (2019, 2020, 2021). 
+
 #### Unexpected Findings: Phenomena is that there are fewer people on Citibikes but longer durations on them.
 There are significantly less people between year 2019 and 2020 on Citibikes based on the tag on/tag off count at stations. 
-- 2019: 809,894 station counts, 
-- 2020: 673,604 station counts.
+- 2019: 809,894 station counts
+- 2020: 673,604 station counts
 
 Interestingly, the trip duration at Grove St PATH (whether it is the start point or end point of the trip) are generally short (~10 minutes if all data from 2019 to 2021 is taken into consideration). However, a stations such as Liberty Light Rail, located slightly further away from Colgate Center and also less visitor count, have a much higher average trip duration of 46 minutes. 
 
