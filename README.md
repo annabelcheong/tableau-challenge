@@ -78,4 +78,5 @@ The busiest hour for male and female are both at 5-6pm which is expected (end of
 
 ### FILE: citibikes.twb
 - Contains the Tableau file which extracts the 1 csv file (as produced from the citibikes.ipynb file), and displays the multiple sheets, dashboards and story.
-* Also available on Tableau online: https://prod-apsoutheast-a.online.tableau.com/#/site/newyorkcitibikeswithannabel/workbooks/45034?:origin=card_share_link
+* Also available on Tableau Public: https://public.tableau.com/profile/annabel.cheong#!/vizhome/citibikes_16213477482290/GenderBikeUse
+
